@@ -1,7 +1,7 @@
 {
   "_leia": "Fonte única de produtos, preços (em centavos) e links. Para abrir vendas: preencha checkout_url (HTTPS da Kiwify) de cada SKU, os dados de seller e support, e só então mude commerce.enabled para true. O build falha se faltar algo obrigatório.",
   "brand": "Intensivão Elite",
-  "site_url": "https://intensivao-elite.vercel.app",
+  "site_url": "https://intensivao-elite-ten.vercel.app",
   "currency": "BRL",
   "commerce": {
     "enabled": false,

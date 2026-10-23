@@ -57,6 +57,6 @@ Continuam desligados até que os PDFs sejam produzidos e a entrega e o checkout 
 - [ ] Entrega configurada na Kiwify: PDFs de cada produto e Kit de Ação em todos
 - [ ] Nome do responsável pela venda (e CPF/CNPJ, se for exibir)
 - [ ] Canal de suporte (e-mail e/ou WhatsApp)
-- [ ] Domínio final (hoje está `https://intensivao-elite.vercel.app`, mas esse projeto não aparece na conta da Vercel conectada)
+- [ ] Domínio final (hoje é `https://intensivao-elite-ten.vercel.app`, projeto `intensivao-elite` na Vercel; para um domínio próprio, adicione-o no painel e atualize `site_url`)
 - [ ] Revisão humana do Diagnóstico Express e do Kit de Ação antes de publicar
 - [ ] Upsells: produzir os dois PDFs (ver prompt 04)
