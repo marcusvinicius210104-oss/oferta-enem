@@ -3,6 +3,11 @@
   "brand": "Intensivão Elite",
   "site_url": "https://intensivao-elite-ten.vercel.app",
   "currency": "BRL",
+  "exam": {
+    "_fonte": "Aplicação regular prevista pelo Inep (comunicado de 20/10/2026, citado no volume 08). Conferir antes de cada edição.",
+    "name": "ENEM 2026",
+    "days": ["2026-11-08", "2026-11-15"]
+  },
   "commerce": {
     "enabled": false,
     "provider": "kiwify"

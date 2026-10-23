@@ -25,6 +25,49 @@ function withUtms(href) {
   return url.toString();
 }
 
+// Contagem regressiva até as datas reais da prova (definidas no catálogo).
+// Nível: calmo (> 30 dias), atencao (8 a 30 dias), urgente (7 dias ou menos e nos dias de prova).
+const DIA = 86_400_000;
+const dois = (n) => String(n).padStart(2, "0");
+const diaMes = (d) => d.toLocaleDateString("pt-BR", { day: "numeric", month: "2-digit", timeZone: "America/Sao_Paulo" });
+
+function iniciarContagem(barra) {
+  const dias = JSON.parse(barra.dataset.dias).map((s) => new Date(s));
+  const rotulo = barra.querySelector("[data-contagem-rotulo]");
+  const relogio = barra.querySelector("[data-contagem-relogio]");
+  const sufixo = barra.querySelector("[data-contagem-sufixo]");
+
+  function atualizar() {
+    const agora = Date.now();
+    const i = dias.findIndex((d) => agora < d.getTime() + DIA);
+    if (i === -1) { barra.hidden = true; return false; }
+    const alvo = dias[i].getTime();
+    const ordem = i === 0 ? "1º" : "2º";
+
+    if (agora >= alvo) {
+      barra.dataset.nivel = "urgente";
+      rotulo.textContent = `Hoje é o ${ordem} dia do ENEM. Boa prova!`;
+      relogio.textContent = "";
+      sufixo.textContent = "";
+      return true;
+    }
+    const falta = alvo - agora;
+    const d = Math.floor(falta / DIA);
+    const h = Math.floor((falta % DIA) / 3_600_000);
+    const m = Math.floor((falta % 3_600_000) / 60_000);
+    const s = Math.floor((falta % 60_000) / 1000);
+    barra.dataset.nivel = d < 7 ? "urgente" : d < 30 ? "atencao" : "calmo";
+    rotulo.textContent = d < 7 ? "Reta final! Faltam" : "Faltam";
+    relogio.textContent = `${d}d ${dois(h)}h ${dois(m)}m ${dois(s)}s`;
+    sufixo.textContent = `para o ${ordem} dia do ENEM (${diaMes(dias[i])})`;
+    return true;
+  }
+
+  if (atualizar()) setInterval(atualizar, 1000);
+}
+
+for (const barra of document.querySelectorAll("[data-contagem]")) iniciarContagem(barra);
+
 const page = document.body.dataset.page;
 if (page === "offer") track("view_offer", { page_path: location.pathname });
 

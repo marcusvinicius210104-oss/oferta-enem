@@ -78,9 +78,25 @@ const ICON = {
 const icon = (n) => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
 
 // ---------- Blocos ----------
+// Contagem regressiva real até a prova (horário de Brasília). O texto estático é o fallback sem JS.
+const examDays = cat.exam.days.map((d) => `${d}T00:00:00-03:00`);
+const dataCurta = (iso) => { const [, m, d] = iso.split("-"); return `${Number(d)}/${m}`; };
+const contagem = () => `
+  <div class="contagem" data-contagem data-dias='${JSON.stringify(examDays)}' data-nivel="calmo">
+    <div class="wrap contagem__in">
+      <span class="contagem__ponto" aria-hidden="true"></span>
+      <p class="contagem__txt" role="timer" aria-live="off">
+        <span data-contagem-rotulo>${esc(cat.exam.name)}: ${cat.exam.days.map(dataCurta).join(" e ")}</span>
+        <span class="contagem__relogio" data-contagem-relogio></span>
+        <span data-contagem-sufixo></span>
+      </p>
+      <a class="contagem__cta" href="/#combo" data-select="combo">Comece a revisar hoje</a>
+    </div>
+  </div>`;
+
 const header = () => `
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<header class="topo">
+<header class="topo">${contagem()}
   <div class="wrap topo__in">
     <a class="marca" href="/" aria-label="Intensivão Elite, página inicial">INTENSIVÃO <b>ELITE</b></a>
     <nav class="topo__nav" aria-label="Seções">
