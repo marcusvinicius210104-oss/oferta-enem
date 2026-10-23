@@ -1,0 +1,213 @@
+{
+  "_leia": "Fonte única de produtos, preços (em centavos) e links. Para abrir vendas: preencha checkout_url (HTTPS da Kiwify) de cada SKU, os dados de seller e support, e só então mude commerce.enabled para true. O build falha se faltar algo obrigatório.",
+  "brand": "Intensivão Elite",
+  "site_url": "https://intensivao-elite.vercel.app",
+  "currency": "BRL",
+  "commerce": {
+    "enabled": false,
+    "provider": "kiwify"
+  },
+  "seller": {
+    "name": null,
+    "document": null
+  },
+  "support": {
+    "email": null,
+    "whatsapp": null
+  },
+  "delivery": {
+    "summary": "Depois da confirmação do pagamento, a plataforma de pagamento envia o acesso aos PDFs para o e-mail informado na compra."
+  },
+  "products": [
+    {
+      "sku": "exatas",
+      "volume": "01",
+      "name": "Exatas na Prática",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "exatas",
+      "pages": 34,
+      "tagline": "Você sabe a fórmula. Mas sabe quando usar?",
+      "scope": "Matemática, Física e Química",
+      "facts": ["34 páginas", "24 temas", "48 questões comentadas"],
+      "summary": "Porcentagem, funções, estatística, probabilidade, geometria, energia, eletricidade, estequiometria e pH explicados pelo raciocínio, com exemplo resolvido em cada tema.",
+      "details": [
+        "Matemática: porcentagem, proporção, unidades, funções, juros, estatística, probabilidade, geometria e trigonometria",
+        "Física: movimento, energia, eletricidade e consumo, calor, ondas, som e luz",
+        "Química: mol, soluções, pH, orgânica, oxirredução, equilíbrio e tratamento de água",
+        "Leitura de gráficos e gabarito comentado"
+      ]
+    },
+    {
+      "sku": "humanas",
+      "volume": "02",
+      "name": "Humanas com Contexto",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "humanas",
+      "pages": 23,
+      "tagline": "Pare de decorar fatos soltos.",
+      "scope": "História, Geografia, Filosofia e Sociologia",
+      "facts": ["23 páginas", "16 temas", "32 questões comentadas"],
+      "summary": "Fatos ligados a causas, contextos e consequências: do Brasil colonial à redemocratização, guerras e descolonização, cartografia, cidade, clima, ética e trabalho.",
+      "details": [
+        "História do Brasil e geral, com leitura de fontes",
+        "Geografia: cartografia, urbanização, redes produtivas, clima e riscos",
+        "Filosofia e Sociologia: ética, conhecimento, cultura, trabalho e poder",
+        "Gabarito comentado"
+      ]
+    },
+    {
+      "sku": "biologia-linguagens",
+      "volume": "03",
+      "name": "Biologia e Linguagens",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "biologia-linguagens",
+      "pages": 18,
+      "tagline": "Processos da vida e leitura com propósito.",
+      "scope": "Biologia e leitura em língua portuguesa",
+      "facts": ["18 páginas", "12 temas", "24 questões comentadas"],
+      "summary": "Ecologia, células, genética, evolução, fisiologia e imunidade, além de interpretação, variação linguística, textos multimodais e literatura.",
+      "details": [
+        "Biologia: 8 temas, de ecologia a botânica",
+        "Linguagens: 4 temas de leitura em português",
+        "Não inclui inglês nem espanhol",
+        "Gabarito comentado"
+      ]
+    },
+    {
+      "sku": "redacao",
+      "volume": "04",
+      "name": "Redação Destravada",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "redacao",
+      "pages": 30,
+      "tagline": "Trava na hora de começar?",
+      "scope": "Redação dissertativo-argumentativa",
+      "facts": ["30 páginas", "12 oficinas", "2 modelos comentados"],
+      "summary": "Do recorte do tema à intervenção, em 12 oficinas guiadas pelas 5 competências usadas na correção, com dois modelos comentados, quatro propostas e exercícios de reescrita.",
+      "details": [
+        "12 oficinas: tema, tese, introdução, argumento, repertório, coesão, intervenção e revisão",
+        "2 redações-modelo com leitura comentada",
+        "4 propostas de treino e 12 exercícios de reescrita com respostas possíveis",
+        "Checklist e folha de 30 linhas. Não inclui correção individual"
+      ]
+    },
+    {
+      "sku": "formulas",
+      "volume": "05",
+      "name": "100 Fórmulas e Relações",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "formulas",
+      "pages": 30,
+      "tagline": "A fórmula, os símbolos e quando ela vale.",
+      "scope": "Matemática, Física e Química",
+      "facts": ["30 páginas", "100 fórmulas", "condições de uso"],
+      "summary": "Cada fórmula vem com o significado dos símbolos, as condições para usar e uma aplicação numérica curta. Inclui conversões e constantes úteis.",
+      "details": [
+        "Matemática, Física e Química",
+        "Símbolos, condições de uso e exemplo para cada relação",
+        "Conversões e constantes úteis"
+      ]
+    },
+    {
+      "sku": "flashcards",
+      "volume": "06",
+      "name": "90 Flashcards de Revisão",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "flashcards",
+      "pages": 28,
+      "tagline": "Lembrar antes de olhar a resposta.",
+      "scope": "Todas as áreas",
+      "facts": ["28 páginas", "90 cartões", "pergunta e resposta"],
+      "summary": "Cartões de pergunta e resposta em PDF para imprimir, recortar e dobrar, ou ler um a um no celular. Não é um aplicativo.",
+      "details": [
+        "Pergunta e resposta explicada na mesma face, com linha de dobra",
+        "Roteiro de sessão de 15 minutos",
+        "Formato PDF, não é aplicativo de flashcards"
+      ]
+    },
+    {
+      "sku": "mapas",
+      "volume": "07",
+      "name": "28 Mapas Mentais",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "mapas",
+      "pages": 34,
+      "tagline": "A matéria inteira de relance.",
+      "scope": "Sete disciplinas",
+      "facts": ["34 páginas", "28 mapas", "7 disciplinas"],
+      "summary": "Matemática, Física, Química, Biologia, História, Geografia, Linguagens e Redação, quatro mapas cada, com uma pergunta de aplicação ao fim de cada página.",
+      "details": [
+        "4 mapas por disciplina, com quatro ramos cada",
+        "Pergunta de aplicação em cada mapa",
+        "Filosofia e Sociologia estão no volume de Humanas e nos flashcards"
+      ]
+    },
+    {
+      "sku": "plano",
+      "volume": "08",
+      "name": "Plano de Revisão e Diagnóstico",
+      "price_cents": 997,
+      "checkout_url": null,
+      "cover": "plano",
+      "pages": 26,
+      "tagline": "O que estudar em cada um dos 14 dias.",
+      "scope": "Organização da revisão",
+      "facts": ["26 páginas", "14 dias", "rotinas de 2h, 4h ou 6h"],
+      "summary": "Diagnóstico de entrada, trilhas por objetivo, um roteiro por dia com revisões D+1 e D+7, um roteiro entre as provas e um caderno de erros.",
+      "details": [
+        "Diagnóstico de 12 questões com correção e destino",
+        "14 dias com blocos de Exatas, Humanas e Redação",
+        "Rotinas para 2h, 4h ou 6h líquidas, ou menos de 2h",
+        "Caderno de erros e roteiro entre as provas"
+      ]
+    }
+  ],
+  "combo": {
+    "sku": "combo-revisao",
+    "name": "Combo Revisão Completa",
+    "price_cents": 5990,
+    "checkout_url": null,
+    "includes": ["exatas", "humanas", "biologia-linguagens", "redacao", "formulas", "flashcards", "mapas", "plano"]
+  },
+  "bonus": {
+    "sku": "kit-acao",
+    "name": "Kit de Ação do Aluno",
+    "pages": 10,
+    "summary": "Folhas para organizar a execução: painel da semana, registro de sessão, rastreador de questões, revisões programadas, três prioridades finais e checklist da véspera."
+  },
+  "free_sample": {
+    "sku": "diagnostico-express",
+    "name": "Diagnóstico Express ENEM",
+    "file": "/downloads/diagnostico-express-enem.pdf",
+    "pages": 10
+  },
+  "upsells": [
+    {
+      "sku": "treino-extra",
+      "route": "oferta-extra-1",
+      "name": "Treino Extra de Questões",
+      "price_cents": 1990,
+      "summary": "60 questões inéditas em três blocos de 20, com gabarito comentado alternativa por alternativa.",
+      "enabled": false,
+      "materials_ready": false,
+      "checkout_url": null
+    },
+    {
+      "sku": "oficina-extra-redacao",
+      "route": "oferta-extra-2",
+      "name": "Oficina Extra de Redação",
+      "price_cents": 2990,
+      "summary": "Seis propostas novas, quatro redações-modelo comentadas e exercícios de tese, causa, articulação, intervenção e reescrita.",
+      "enabled": false,
+      "materials_ready": false,
+      "checkout_url": null
+    }
+  ]
+}

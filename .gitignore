@@ -1,0 +1,11 @@
+# Arquivos privados: PDFs pagos, brinde e suas fontes. Nunca publicar.
+privado/
+Materiais_Privados/
+*.zip
+
+# Saída do build
+dist/
+
+.DS_Store
+.vercel
+node_modules/

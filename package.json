@@ -1,0 +1,10 @@
+{
+  "name": "intensivao-elite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "pdfs": "bash scripts/gerar-pdfs.sh",
+    "preview": "node scripts/build.mjs && node scripts/servir.mjs"
+  }
+}

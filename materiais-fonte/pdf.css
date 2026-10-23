@@ -1,0 +1,181 @@
+/* Estilo compartilhado dos PDFs do Intensivão Elite (renderizados pelo Chrome headless). */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=block");
+
+:root {
+  --navy: #111F37;
+  --navy-2: #1A2C4C;
+  --teal: #007C83;
+  --teal-soft: #E3F1F2;
+  --gold: #E3B765;
+  --gold-ink: #8A6416;
+  --ink: #1B2333;
+  --muted: #5A6476;
+  --line: #D6DCE5;
+  --paper: #FFFFFF;
+  --tint: #F5F7FA;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 17mm 18mm 17mm;
+  @top-left {
+    content: "INTENSIVÃO ELITE";
+    font: 700 7.5pt "Inter", sans-serif;
+    letter-spacing: 0.18em;
+    color: #007C83;
+  }
+  @bottom-left {
+    content: "Material independente, sem vínculo com Inep ou MEC.";
+    font: 400 7pt "Inter", sans-serif;
+    color: #5A6476;
+  }
+  @bottom-right {
+    content: counter(page, decimal-leading-zero);
+    font: 700 8pt "Inter", sans-serif;
+    color: #111F37;
+  }
+}
+
+@page capa {
+  margin: 0;
+  @top-left { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  margin: 0;
+  font: 400 10pt/1.5 "Inter", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* ---------- Capa ---------- */
+.capa {
+  page: capa;
+  break-after: page;
+  width: 210mm;
+  height: 297mm;
+  background:
+    radial-gradient(120mm 90mm at 78% 72%, rgba(0, 124, 131, 0.38), transparent 70%),
+    radial-gradient(80mm 60mm at 20% 18%, rgba(227, 183, 101, 0.10), transparent 70%),
+    var(--navy);
+  color: #F6F1E7;
+  padding: 26mm 22mm 22mm;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.capa .marca { font: 500 11pt "Inter"; letter-spacing: 0.32em; }
+.capa .marca b { color: var(--gold); font-weight: 800; }
+.capa .filete { width: 26mm; height: 0.6mm; background: var(--gold); margin: 7mm auto; }
+.capa .volume { font: 600 10.5pt "Inter"; letter-spacing: 0.22em; }
+.capa .volume span { color: #2FB3BA; }
+.capa h1 {
+  font: 900 50pt/0.95 "Archivo", sans-serif;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 10mm 0 6mm;
+}
+.capa .gancho { font: 500 19pt/1.25 "Inter"; margin: 0; }
+.capa .gancho em { font-style: normal; color: var(--gold); font-weight: 700; }
+.capa .emblema { flex: 1; display: flex; align-items: center; justify-content: center; }
+.capa .rodape-capa { font: 600 9pt "Inter"; letter-spacing: 0.24em; text-transform: uppercase; }
+.capa .beneficio { font: 500 13pt "Inter"; margin-bottom: 6mm; }
+
+/* ---------- Tipografia interna ---------- */
+.pagina { break-before: page; }
+.pagina:first-of-type { break-before: auto; }
+.rotulo {
+  font: 700 7.5pt "Inter";
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 2mm;
+}
+h2 {
+  font: 800 21pt/1.12 "Archivo", sans-serif;
+  color: var(--navy);
+  margin: 0 0 4mm;
+}
+h3 {
+  font: 700 12pt/1.3 "Archivo", sans-serif;
+  color: var(--navy);
+  margin: 6mm 0 2mm;
+}
+p { margin: 0 0 3mm; }
+.lead { font-size: 11pt; color: var(--muted); }
+.nota {
+  font-size: 8.5pt;
+  color: var(--muted);
+  border-top: 0.3mm solid var(--line);
+  padding-top: 2.5mm;
+  margin-top: 5mm;
+}
+ul, ol { margin: 0 0 3mm; padding-left: 5mm; }
+li { margin-bottom: 1.2mm; }
+
+.caixa {
+  background: var(--tint);
+  border-left: 1.2mm solid var(--teal);
+  border-radius: 1.5mm;
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  break-inside: avoid;
+}
+.caixa.ouro { border-left-color: var(--gold); background: #FBF6EC; }
+.caixa h3 { margin-top: 0; }
+
+.grade-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.grade-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+
+/* ---------- Questões ---------- */
+.questao { break-inside: avoid; margin: 0 0 5mm; }
+.questao .enunciado { font-weight: 600; margin-bottom: 2mm; }
+.questao .enunciado b { color: var(--teal); margin-right: 1.5mm; }
+.alternativas { list-style: none; padding: 0; margin: 0; }
+.alternativas li {
+  display: flex; gap: 2.5mm; align-items: baseline;
+  padding: 1.1mm 0 1.1mm 2mm;
+  margin: 0;
+}
+.alternativas li span {
+  flex: none; width: 5.2mm; height: 5.2mm; border-radius: 50%;
+  border: 0.3mm solid var(--navy);
+  font: 700 7.5pt/5mm "Inter"; text-align: center; color: var(--navy);
+}
+.alternativas.em-linha { display: flex; flex-wrap: wrap; gap: 1mm 7mm; }
+.alternativas.em-linha li { padding-left: 2mm; }
+.seguranca { font-size: 8pt; color: var(--muted); margin-top: 1.5mm; padding-left: 2mm; }
+
+/* ---------- Tabelas e formulários ---------- */
+table { width: 100%; border-collapse: collapse; font-size: 9pt; break-inside: auto; }
+th {
+  background: var(--navy); color: #fff; text-align: left;
+  font: 700 7.5pt "Inter"; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 2mm 2.5mm;
+}
+td { border-bottom: 0.3mm solid var(--line); padding: 2.3mm 2.5mm; vertical-align: top; }
+tr { break-inside: avoid; }
+table.preencher td { height: 9mm; }
+.linha { border-bottom: 0.3mm solid #AEB7C5; height: 8mm; }
+.campo { font-size: 8.5pt; color: var(--muted); }
+.check { display: inline-block; width: 3.6mm; height: 3.6mm; border: 0.35mm solid var(--navy); border-radius: 0.6mm; margin-right: 2mm; vertical-align: -0.6mm; }
+
+/* ---------- Gabarito ---------- */
+.resposta { break-inside: avoid; border-bottom: 0.3mm solid var(--line); padding: 3mm 0; }
+.resposta header { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 1.5mm; }
+.resposta .num { font: 800 13pt "Archivo"; color: var(--navy); }
+.resposta .letra {
+  font: 700 8pt "Inter"; color: #fff; background: var(--teal);
+  border-radius: 1mm; padding: 0.6mm 2mm; letter-spacing: 0.06em;
+}
+.resposta .destino { margin-left: auto; font: 600 8pt "Inter"; color: var(--gold-ink); }
+.resposta p { margin-bottom: 1.5mm; }
+.resposta .distratores { font-size: 9pt; color: var(--muted); margin: 0; }
