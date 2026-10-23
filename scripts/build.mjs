@@ -3,6 +3,7 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = join(ROOT, "dist");
@@ -49,6 +50,9 @@ const upsellLive = (u) => SELLING && u.enabled && u.materials_ready && isHttps(u
 const canBuy = (item) => SELLING && isHttps(item.checkout_url);
 
 // ---------- Utilidades de template ----------
+// Versão pelo conteúdo: o cache longo de /assets nunca serve CSS/JS desatualizado.
+const versao = (rel) => createHash("sha1").update(readFileSync(join(ROOT, "public", rel))).digest("hex").slice(0, 10);
+const asset = (rel) => `/${rel}?v=${versao(rel)}`;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const cover = (slug, alt, { eager = false, sizes = "(max-width: 640px) 45vw, 220px" } = {}) =>
   `<img src="/assets/img/capas/${slug}-360.webp" srcset="/assets/img/capas/${slug}-360.webp 360w, /assets/img/capas/${slug}-720.webp 720w" sizes="${sizes}" width="360" height="509" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
@@ -146,8 +150,8 @@ ${noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
 ${preload ? `<link rel="preload" as="image" href="/assets/img/capas/${preload}-360.webp" imagesrcset="/assets/img/capas/${preload}-360.webp 360w, /assets/img/capas/${preload}-720.webp 720w" imagesizes="(max-width: 640px) 45vw, 220px">` : ""}
-<link rel="stylesheet" href="/assets/css/site.css">
-<script type="module" src="/assets/js/app.js"></script>
+<link rel="stylesheet" href="${asset("assets/css/site.css")}">
+<script type="module" src="${asset("assets/js/app.js")}"></script>
 </head>`;
 }
 
