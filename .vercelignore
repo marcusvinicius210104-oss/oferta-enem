@@ -1,0 +1,7 @@
+# Nunca enviar arquivos privados para a Vercel
+privado/
+dist/
+.claude/
+*.zip
+.env*
+.vercel/
