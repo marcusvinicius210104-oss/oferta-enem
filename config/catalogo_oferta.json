@@ -6,22 +6,27 @@
   "exam": {
     "_fonte": "Aplicação regular prevista pelo Inep (comunicado de 20/10/2026, citado no volume 08). Conferir antes de cada edição.",
     "name": "ENEM 2026",
-    "days": ["2026-11-08", "2026-11-15"]
+    "days": [
+      "2026-11-08",
+      "2026-11-15"
+    ]
   },
   "commerce": {
     "enabled": false,
-    "provider": "kiwify"
+    "provider": "cakto",
+    "_buyer_fee": "Taxa de serviço que a Cakto soma no checkout e o comprador paga (verificada em 23/10/2026). Use 0 se deixar de existir.",
+    "buyer_fee_cents": 99
   },
   "seller": {
     "name": null,
     "document": null
   },
   "support": {
-    "email": null,
+    "email": "eliteeduc@gmail.com",
     "whatsapp": null
   },
   "delivery": {
-    "summary": "Depois da confirmação do pagamento, a plataforma de pagamento envia o acesso aos PDFs para o e-mail informado na compra."
+    "summary": "Depois da confirmação do pagamento, a Cakto envia o acesso à área de membros para o e-mail informado na compra."
   },
   "products": [
     {
@@ -29,12 +34,16 @@
       "volume": "01",
       "name": "Exatas na Prática",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/3a22oum_1235127",
       "cover": "exatas",
       "pages": 34,
       "tagline": "Você sabe a fórmula. Mas sabe quando usar?",
       "scope": "Matemática, Física e Química",
-      "facts": ["34 páginas", "24 temas", "48 questões comentadas"],
+      "facts": [
+        "34 páginas",
+        "24 temas",
+        "48 questões comentadas"
+      ],
       "summary": "Porcentagem, funções, estatística, probabilidade, geometria, energia, eletricidade, estequiometria e pH explicados pelo raciocínio, com exemplo resolvido em cada tema.",
       "details": [
         "Matemática: porcentagem, proporção, unidades, funções, juros, estatística, probabilidade, geometria e trigonometria",
@@ -48,12 +57,16 @@
       "volume": "02",
       "name": "Humanas com Contexto",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/4vnxxni_1235137",
       "cover": "humanas",
       "pages": 23,
       "tagline": "Pare de decorar fatos soltos.",
       "scope": "História, Geografia, Filosofia e Sociologia",
-      "facts": ["23 páginas", "16 temas", "32 questões comentadas"],
+      "facts": [
+        "23 páginas",
+        "16 temas",
+        "32 questões comentadas"
+      ],
       "summary": "Fatos ligados a causas, contextos e consequências: do Brasil colonial à redemocratização, guerras e descolonização, cartografia, cidade, clima, ética e trabalho.",
       "details": [
         "História do Brasil e geral, com leitura de fontes",
@@ -63,21 +76,26 @@
       ]
     },
     {
-      "sku": "biologia-linguagens",
+      "sku": "biologia-natureza",
       "volume": "03",
-      "name": "Biologia e Linguagens",
+      "name": "Biologia e Natureza",
       "price_cents": 997,
-      "checkout_url": null,
-      "cover": "biologia-linguagens",
+      "checkout_url": "https://pay.cakto.com.br/wwe6ucd_1235143",
+      "cover": "biologia-natureza",
       "pages": 18,
       "tagline": "Processos da vida e leitura com propósito.",
       "scope": "Biologia e leitura em língua portuguesa",
-      "facts": ["18 páginas", "12 temas", "24 questões comentadas"],
+      "facts": [
+        "18 páginas",
+        "12 temas",
+        "24 questões comentadas"
+      ],
       "summary": "Ecologia, células, genética, evolução, fisiologia e imunidade, além de interpretação, variação linguística, textos multimodais e literatura.",
       "details": [
         "Biologia: 8 temas, de ecologia a botânica",
         "Linguagens: 4 temas de leitura em português",
         "Não inclui inglês nem espanhol",
+        "Física e Química estão no volume 01, Exatas na Prática",
         "Gabarito comentado"
       ]
     },
@@ -86,12 +104,16 @@
       "volume": "04",
       "name": "Redação Destravada",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/32b8kyq_1235147",
       "cover": "redacao",
       "pages": 30,
       "tagline": "Trava na hora de começar?",
       "scope": "Redação dissertativo-argumentativa",
-      "facts": ["30 páginas", "12 oficinas", "2 modelos comentados"],
+      "facts": [
+        "30 páginas",
+        "12 oficinas",
+        "2 modelos comentados"
+      ],
       "summary": "Do recorte do tema à intervenção, em 12 oficinas guiadas pelas 5 competências usadas na correção, com dois modelos comentados, quatro propostas e exercícios de reescrita.",
       "details": [
         "12 oficinas: tema, tese, introdução, argumento, repertório, coesão, intervenção e revisão",
@@ -105,12 +127,16 @@
       "volume": "05",
       "name": "100 Fórmulas e Relações",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/3ahd8s8_1235148",
       "cover": "formulas",
       "pages": 30,
       "tagline": "A fórmula, os símbolos e quando ela vale.",
       "scope": "Matemática, Física e Química",
-      "facts": ["30 páginas", "100 fórmulas", "condições de uso"],
+      "facts": [
+        "30 páginas",
+        "100 fórmulas",
+        "condições de uso"
+      ],
       "summary": "Cada fórmula vem com o significado dos símbolos, as condições para usar e uma aplicação numérica curta. Inclui conversões e constantes úteis.",
       "details": [
         "Matemática, Física e Química",
@@ -123,12 +149,16 @@
       "volume": "06",
       "name": "90 Flashcards de Revisão",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/skijocp_1235151",
       "cover": "flashcards",
       "pages": 28,
       "tagline": "Lembrar antes de olhar a resposta.",
       "scope": "Todas as áreas",
-      "facts": ["28 páginas", "90 cartões", "pergunta e resposta"],
+      "facts": [
+        "28 páginas",
+        "90 cartões",
+        "pergunta e resposta"
+      ],
       "summary": "Cartões de pergunta e resposta em PDF para imprimir, recortar e dobrar, ou ler um a um no celular. Não é um aplicativo.",
       "details": [
         "Pergunta e resposta explicada na mesma face, com linha de dobra",
@@ -141,12 +171,16 @@
       "volume": "07",
       "name": "28 Mapas Mentais",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/35h2hud_1235153",
       "cover": "mapas",
       "pages": 34,
       "tagline": "A matéria inteira de relance.",
       "scope": "Sete disciplinas",
-      "facts": ["34 páginas", "28 mapas", "7 disciplinas"],
+      "facts": [
+        "34 páginas",
+        "28 mapas",
+        "7 disciplinas"
+      ],
       "summary": "Matemática, Física, Química, Biologia, História, Geografia, Linguagens e Redação, quatro mapas cada, com uma pergunta de aplicação ao fim de cada página.",
       "details": [
         "4 mapas por disciplina, com quatro ramos cada",
@@ -159,12 +193,16 @@
       "volume": "08",
       "name": "Plano de Revisão e Diagnóstico",
       "price_cents": 997,
-      "checkout_url": null,
+      "checkout_url": "https://pay.cakto.com.br/6wftqdx_1235155",
       "cover": "plano",
       "pages": 26,
       "tagline": "O que estudar em cada um dos 14 dias.",
       "scope": "Organização da revisão",
-      "facts": ["26 páginas", "14 dias", "rotinas de 2h, 4h ou 6h"],
+      "facts": [
+        "26 páginas",
+        "14 dias",
+        "rotinas de 2h, 4h ou 6h"
+      ],
       "summary": "Diagnóstico de entrada, trilhas por objetivo, um roteiro por dia com revisões D+1 e D+7, um roteiro entre as provas e um caderno de erros.",
       "details": [
         "Diagnóstico de 12 questões com correção e destino",
@@ -178,8 +216,17 @@
     "sku": "combo-revisao",
     "name": "Combo Revisão Completa",
     "price_cents": 5990,
-    "checkout_url": null,
-    "includes": ["exatas", "humanas", "biologia-linguagens", "redacao", "formulas", "flashcards", "mapas", "plano"]
+    "checkout_url": "https://pay.cakto.com.br/3f8pv3o_1235113",
+    "includes": [
+      "exatas",
+      "humanas",
+      "biologia-natureza",
+      "redacao",
+      "formulas",
+      "flashcards",
+      "mapas",
+      "plano"
+    ]
   },
   "bonus": {
     "sku": "kit-acao",

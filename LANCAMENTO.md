@@ -51,6 +51,14 @@ Rotas: `/`, `/exatas`, `/humanas`, `/redacao`, `/gratis`, `/obrigado`, `/termos`
 
 Continuam desligados até que os PDFs sejam produzidos e a entrega e o checkout estejam configurados na Kiwify. Para ligar um upsell: `materials_ready: true`, `checkout_url` HTTPS e `enabled: true`, com vendas ativas.
 
+## Estado da Cakto (23/10/2026)
+
+- 9 produtos criados e ativos, com links de checkout em `config/catalogo_oferta.json` e IDs em `config/produtos_cakto.json`.
+- A Cakto soma R$ 0,99 de taxa de serviço paga pelo comprador; o site mostra o aviso quando as vendas são ligadas.
+- Áreas de membros prontas: Combo, Exatas, Humanas, Biologia e Natureza, Redação.
+- Áreas de membros pendentes: 100 Fórmulas, 90 Flashcards, 28 Mapas, Plano de Revisão. Seguir o mesmo formato: seção "Seu material" com os módulos "Como usar seu material" (guia + Diagnóstico + Kit) e o volume (aula + PDF).
+- Imagens prontas em `privado/cakto/` e PDFs em `privado/colecao/PDFs/`.
+
 ## Pendências que impedem a venda
 
 - [ ] 9 links de checkout da Kiwify (8 módulos e o combo)

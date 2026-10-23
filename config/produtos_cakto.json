@@ -1,0 +1,79 @@
+{
+  "_leia": "Produtos a criar na Cakto. Preços vêm de catalogo_oferta.json. Descrição: mínimo de 100 caracteres (exigência da Cakto).",
+  "garantia_dias": 7,
+  "produtos": [
+    {
+      "sku": "combo-revisao",
+      "nome": "Intensivão Elite: Combo Revisão Completa",
+      "imagem": "00-combo.png",
+      "descricao": "Os 8 módulos de revisão para o ENEM em PDF: Exatas, Humanas, Biologia, Redação, fórmulas, flashcards, mapas e plano de 14 dias. Brinde: Kit de Ação do Aluno.",
+      "cakto_id": "577e4162-d11f-4509-b60d-59ac59321b36",
+      "checkout_url": "https://pay.cakto.com.br/3f8pv3o_1235113"
+    },
+    {
+      "sku": "exatas",
+      "nome": "Intensivão Elite: Exatas na Prática",
+      "imagem": "01-exatas.png",
+      "descricao": "Revisão de Matemática, Física e Química para o ENEM em PDF: 24 temas explicados pelo raciocínio, com exemplo resolvido e 48 questões comentadas.",
+      "cakto_id": "4cf9f948-da7c-45e7-954e-9f69386dbd8e",
+      "checkout_url": "https://pay.cakto.com.br/3a22oum_1235127"
+    },
+    {
+      "sku": "humanas",
+      "nome": "Intensivão Elite: Humanas com Contexto",
+      "imagem": "02-humanas.png",
+      "descricao": "Revisão de História, Geografia, Filosofia e Sociologia para o ENEM em PDF: fatos ligados a contexto, causa e consequência, com 32 questões comentadas.",
+      "cakto_id": "aeefbdaa-6ba1-4a9a-ad2c-fcb0e5dbc72b",
+      "checkout_url": "https://pay.cakto.com.br/4vnxxni_1235137"
+    },
+    {
+      "sku": "biologia-natureza",
+      "nome": "Intensivão Elite: Biologia e Natureza",
+      "imagem": "03-biologia-natureza.png",
+      "descricao": "Revisão de Biologia e leitura em português para o ENEM em PDF: ecologia, células, genética, evolução e interpretação, com 24 questões comentadas.",
+      "cakto_id": "481052f5-e62a-44c0-9262-24e4e1a48aa6",
+      "checkout_url": "https://pay.cakto.com.br/wwe6ucd_1235143"
+    },
+    {
+      "sku": "redacao",
+      "nome": "Intensivão Elite: Redação Destravada",
+      "imagem": "04-redacao.png",
+      "descricao": "Redação para o ENEM em PDF: 12 oficinas do recorte do tema à intervenção, 2 modelos comentados, 4 propostas e exercícios de reescrita. Sem correção individual.",
+      "cakto_id": "b40892f7-715f-434b-b141-02a544f6a5f1",
+      "checkout_url": "https://pay.cakto.com.br/32b8kyq_1235147"
+    },
+    {
+      "sku": "formulas",
+      "nome": "Intensivão Elite: 100 Fórmulas e Relações",
+      "imagem": "05-formulas.png",
+      "descricao": "100 fórmulas e relações de Matemática, Física e Química para o ENEM em PDF, cada uma com símbolos, condições de uso e um exemplo de aplicação.",
+      "cakto_id": "0eacf9e5-9633-4dae-968d-d4d55b2fde7b",
+      "checkout_url": "https://pay.cakto.com.br/3ahd8s8_1235148"
+    },
+    {
+      "sku": "flashcards",
+      "nome": "Intensivão Elite: 90 Flashcards de Revisão",
+      "imagem": "06-flashcards.png",
+      "descricao": "90 flashcards de pergunta e resposta para revisar o ENEM, em PDF para imprimir e dobrar ou ler no celular, com roteiro de sessão de 15 minutos.",
+      "cakto_id": "5a261fca-fcd5-4f77-aa08-1dfc1b8ea0d6",
+      "checkout_url": "https://pay.cakto.com.br/skijocp_1235151"
+    },
+    {
+      "sku": "mapas",
+      "nome": "Intensivão Elite: 28 Mapas Mentais",
+      "imagem": "07-mapas.png",
+      "descricao": "28 mapas mentais em PDF de Matemática, Física, Química, Biologia, História, Geografia, Linguagens e Redação, com pergunta de aplicação em cada mapa.",
+      "cakto_id": "fca42aed-c5d4-4bdd-8af8-c22afc7e8ca7",
+      "checkout_url": "https://pay.cakto.com.br/35h2hud_1235153"
+    },
+    {
+      "sku": "plano",
+      "nome": "Intensivão Elite: Plano de Revisão e Diagnóstico",
+      "imagem": "08-plano.png",
+      "descricao": "Plano de revisão de 14 dias para o ENEM em PDF, com rotinas de 2h, 4h ou 6h, diagnóstico de 12 questões, revisões programadas e caderno de erros.",
+      "cakto_id": "29ab5f80-dd55-4f35-9d30-3dae4f81481b",
+      "checkout_url": "https://pay.cakto.com.br/6wftqdx_1235155"
+    }
+  ],
+  "_taxa_comprador": "A Cakto soma 'Taxa de serviço' de R$ 0,99 paga pelo comprador no checkout (verificado em 23/10/2026)."
+}

@@ -46,6 +46,10 @@ if (erros.length) {
   console.error("Build interrompido:\n- " + erros.join("\n- "));
   process.exit(1);
 }
+// Taxa cobrada do comprador pela plataforma: precisa ficar visível antes do clique de compra.
+const feeCents = cat.commerce.buyer_fee_cents ?? 0;
+const feeNote = (cls = "breve") =>
+  SELLING && feeCents > 0 ? `<p class="${cls}">+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.</p>` : "";
 const upsellLive = (u) => SELLING && u.enabled && u.materials_ready && isHttps(u.checkout_url);
 const canBuy = (item) => SELLING && isHttps(item.checkout_url);
 
@@ -281,7 +285,7 @@ function moduleCard(p, focus) {
     </details>
     <div class="modulo__compra">
       <p class="preco">${brl(p.price_cents)}</p>
-      ${buy ?? `<a class="btn btn--linha-escura btn--bloco" href="#combo" data-select-module="${p.sku}">Ver no combo</a><p class="breve">Compra avulsa disponível em breve.</p>`}
+      ${buy ? buy + feeNote() : `<a class="btn btn--linha-escura btn--bloco" href="#combo" data-select-module="${p.sku}">Ver no combo</a><p class="breve">Compra avulsa disponível em breve.</p>`}
     </div>
   </div>
 </article>`;
@@ -307,14 +311,14 @@ function comboSection() {
     <div class="combo__texto">
       <p class="etiqueta">Melhor custo</p>
       <h2 id="t-combo">Os oito módulos em uma compra</h2>
-      <p class="combo__lead">Exatas, Humanas, Biologia e Linguagens, Redação, fórmulas, flashcards, mapas e o plano de 14 dias: ${totalPages} páginas de revisão nos oito PDFs, com o Kit de Ação do Aluno de brinde.</p>
+      <p class="combo__lead">Exatas, Humanas, Biologia e Natureza, Redação, fórmulas, flashcards, mapas e o plano de 14 dias: ${totalPages} páginas de revisão nos oito PDFs, com o Kit de Ação do Aluno de brinde.</p>
       <div class="combo__preco">
         <p class="combo__de">Separados: <s>${brl(sumCents)}</s></p>
         <p class="combo__por">${brl(combo.price_cents)}</p>
         <p class="combo__eco">Economize ${brl(savingCents)} (cerca de ${savingPct}%)</p>
         <p class="combo__nota">Pagamento único. O valor “separados” é a soma dos oito módulos avulsos.</p>
       </div>
-      ${buy ?? `<a class="btn btn--ouro btn--grande" href="/gratis" data-select="combo">Comece pelo diagnóstico grátis</a><p class="breve breve--claro">As vendas abrem em breve.</p>`}
+      ${buy ? buy + feeNote("breve breve--claro") : `<a class="btn btn--ouro btn--grande" href="/gratis" data-select="combo">Comece pelo diagnóstico grátis</a><p class="breve breve--claro">As vendas abrem em breve.</p>`}
     </div>
     <ul class="combo__lista">
       ${combo.includes.map((sku) => `<li><span class="combo__vol">${bySku[sku].volume}</span><span>${esc(bySku[sku].name)}<small>${esc(bySku[sku].facts.join(" • "))}</small></span></li>`).join("")}
@@ -375,6 +379,7 @@ const FAQ = () => [
   ["Tem correção de redação?", "Não. O módulo traz oficinas, modelos comentados, exercícios e checklist de autoavaliação, sem correção individual."],
   ["O diagnóstico prevê minha nota?", "Não. Ele indica por onde começar a revisão. Doze questões curtas não permitem estimar nota."],
   ["Como recebo?", cat.delivery.summary],
+  ...(SELLING && feeCents > 0 ? [["Tem alguma taxa além do preço?", `Sim. A plataforma de pagamento soma uma taxa de serviço de ${brl(feeCents)} no checkout, que aparece no resumo do pedido antes de você pagar.`]] : []),
   ["Posso pedir reembolso?", `Sim. Você pode desistir da compra em até 7 dias, como prevê o Código de Defesa do Consumidor, mesmo que já tenha baixado o material. O pedido é feito por ${supportLine()}.`],
   ["O material é oficial?", "Não. É um material independente, sem vínculo com o Inep ou o MEC."],
 ];
