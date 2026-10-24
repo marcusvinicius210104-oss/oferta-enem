@@ -83,6 +83,41 @@ for (const card of document.querySelectorAll("[data-flash]")) {
   });
 }
 
+// Etapas de "Como funciona": acendem em sequência ao aparecer e respondem ao clique.
+for (const lista of document.querySelectorAll("[data-passos]")) {
+  const passos = [...lista.children];
+  const marcar = (ativo) =>
+    passos.forEach((p, i) => {
+      p.classList.toggle("is-feito", i < ativo);
+      p.classList.toggle("is-ativo", i === ativo);
+      p.querySelector("button").setAttribute("aria-current", i === ativo ? "step" : "false");
+    });
+  let timer;
+  const parar = () => clearInterval(timer);
+  lista.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-passo]");
+    if (!btn) return;
+    parar();
+    marcar(Number(btn.dataset.passo));
+  });
+  const reduzido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduzido || !("IntersectionObserver" in window)) {
+    marcar(passos.length - 1);
+    continue;
+  }
+  marcar(0);
+  const obs = new IntersectionObserver(
+    ([entrada]) => {
+      if (!entrada.isIntersecting) return;
+      obs.disconnect();
+      let i = 0;
+      timer = setInterval(() => (++i < passos.length ? marcar(i) : parar()), 1200);
+    },
+    { threshold: 0.35 }
+  );
+  obs.observe(lista);
+}
+
 document.addEventListener("click", (e) => {
   const el = e.target.closest("a, summary");
   if (!el) return;

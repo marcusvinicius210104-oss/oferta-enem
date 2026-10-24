@@ -369,10 +369,12 @@ const comoRecebe = () => `
 <section class="secao secao--clara" aria-labelledby="t-como">
   <div class="wrap">
     <h2 id="t-como">Como funciona</h2>
-    <ol class="passos">
-      <li><span>1</span><h3>Escolha</h3><p>Um módulo avulso por ${brl(997)} ou o combo com os oito por ${brl(combo.price_cents)}.</p></li>
-      <li><span>2</span><h3>Pague</h3><p>Você conclui o pagamento único no checkout seguro da plataforma de pagamento.</p></li>
-      <li><span>3</span><h3>Receba</h3><p>${esc(cat.delivery.summary)}</p></li>
+    <ol class="passos" data-passos>
+      ${[
+        ["Escolha", `Um módulo avulso por ${brl(997)} ou o combo com os oito por ${brl(combo.price_cents)}.`],
+        ["Pague", "Você conclui o pagamento único no checkout seguro da plataforma de pagamento."],
+        ["Receba", esc(cat.delivery.summary)],
+      ].map(([t, p], i) => `<li class="passo"><h3><button type="button" class="passo__btn" data-passo="${i}"><span class="passo__num">${i + 1}</span>${t}</button></h3><p>${p}</p></li>`).join("\n      ")}
     </ol>
     ${relatos()}
   </div>
