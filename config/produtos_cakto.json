@@ -75,5 +75,25 @@
       "checkout_url": "https://pay.cakto.com.br/6wftqdx_1235155"
     }
   ],
+  "extras": [
+    {
+      "sku": "treino-extra",
+      "nome": "Intensivão Elite: Treino Extra de Questões",
+      "preco_cents": 1990,
+      "imagem": "extra-treino.png",
+      "descricao": "60 questões originais de Matemática, Humanas e Natureza, com gabarito explicado, análise das alternativas e registro de segurança.",
+      "cakto_id": "ec3668ae-214e-4be5-9acc-ff08bb2b0d4d",
+      "checkout_url": "https://pay.cakto.com.br/n8rybkm_1238806"
+    },
+    {
+      "sku": "oficina-extra-redacao",
+      "nome": "Intensivão Elite: Oficina Extra de Redação",
+      "preco_cents": 2990,
+      "imagem": "extra-oficina.png",
+      "descricao": "6 propostas inéditas, 4 redações-modelo comentadas e exercícios para planejar, argumentar e reescrever, com checklist e folhas de treino.",
+      "cakto_id": "75d55125-2287-4ae8-9ae1-ff3b74e6b60a",
+      "checkout_url": "https://pay.cakto.com.br/32n9g2x_1238807"
+    }
+  ],
   "_taxa_comprador": "A Cakto soma 'Taxa de serviço' de R$ 0,99 paga pelo comprador no checkout (verificado em 23/10/2026)."
 }

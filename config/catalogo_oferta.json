@@ -240,26 +240,29 @@
     "file": "/downloads/diagnostico-express-enem.pdf",
     "pages": 10
   },
+  "_upsell_fluxo": "Compra na Cakto → /oferta-extra-1 (Treino, compra em um clique) → /oferta-extra-2 (Oficina) → área de membros. 'next' é a rota seguinte; null volta para a área de membros. O offer-id vem do checkout_url.",
   "upsells": [
     {
       "sku": "treino-extra",
       "route": "oferta-extra-1",
       "name": "Treino Extra de Questões",
       "price_cents": 1990,
-      "summary": "60 questões inéditas em três blocos de 20, com gabarito comentado alternativa por alternativa.",
+      "summary": "60 questões originais em três blocos de 20, com gabarito explicado alternativa por alternativa e registro de segurança em cada resposta.",
       "enabled": false,
-      "materials_ready": false,
-      "checkout_url": null
+      "materials_ready": true,
+      "checkout_url": "https://pay.cakto.com.br/n8rybkm_1238806",
+      "next": "oferta-extra-2"
     },
     {
       "sku": "oficina-extra-redacao",
       "route": "oferta-extra-2",
       "name": "Oficina Extra de Redação",
       "price_cents": 2990,
-      "summary": "Seis propostas novas, quatro redações-modelo comentadas e exercícios de tese, causa, articulação, intervenção e reescrita.",
+      "summary": "Seis propostas novas, quatro redações-modelo comentadas, 15 exercícios de tese, causa, articulação, intervenção e reescrita, e folhas de treino.",
       "enabled": false,
-      "materials_ready": false,
-      "checkout_url": null
+      "materials_ready": true,
+      "checkout_url": "https://pay.cakto.com.br/32n9g2x_1238807",
+      "next": null
     }
   ]
 }

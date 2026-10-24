@@ -49,22 +49,30 @@ Rotas: `/`, `/exatas`, `/humanas`, `/redacao`, `/gratis`, `/obrigado`, `/termos`
 
 ## Upsells (Treino Extra R$ 19,90 e Oficina Extra R$ 29,90)
 
-Continuam desligados até que os PDFs sejam produzidos e a entrega e o checkout estejam configurados na Kiwify. Para ligar um upsell: `materials_ready: true`, `checkout_url` HTTPS e `enabled: true`, com vendas ativas.
+Produtos, áreas de membros e checkouts prontos na Cakto (`materials_ready: true`). As páginas usam o botão de compra em um clique da Cakto (`cakto-upsell-accept`), com o `offer-id` tirado do `checkout_url`.
 
-## Estado da Cakto (23/10/2026)
+Fluxo: compra → `/oferta-extra-1` (Treino) → `/oferta-extra-2` (Oficina) → área de membros. O e-mail de acesso da compra principal sai na hora do pagamento, sem esperar o upsell.
 
-- 9 produtos criados e ativos, com links de checkout em `config/catalogo_oferta.json` e IDs em `config/produtos_cakto.json`.
+Para ligar, depois de `commerce.enabled: true`:
+1. `enabled: true` nos dois upsells, build e deploy.
+2. Na Cakto, em cada um dos 9 produtos principais: Upsell e Downsell → marcar "Esse produto tem uma página de obrigado personalizada ou upsell" → URL `https://intensivao-elite-ten.vercel.app/oferta-extra-1` → Salvar. Manter "Enviar imediatamente após o pagamento".
+
+Não aponte a Cakto para `/oferta-extra-1` antes do deploy: com o upsell desligado a página mostra "oferta não disponível".
+
+## Estado da Cakto (24/10/2026)
+
+- 11 produtos ativos: 8 módulos, o combo e os 2 extras. Links em `config/catalogo_oferta.json`; IDs em `config/produtos_cakto.json`.
 - A Cakto soma R$ 0,99 de taxa de serviço paga pelo comprador; o site mostra o aviso quando as vendas são ligadas.
-- Áreas de membros prontas: Combo, Exatas, Humanas, Biologia e Natureza, Redação.
-- Áreas de membros pendentes: 100 Fórmulas, 90 Flashcards, 28 Mapas, Plano de Revisão. Seguir o mesmo formato: seção "Seu material" com os módulos "Como usar seu material" (guia + Diagnóstico + Kit) e o volume (aula + PDF).
-- Imagens prontas em `privado/cakto/` e PDFs em `privado/colecao/PDFs/`.
+- As 11 áreas de membros estão montadas: seção "Seu material", módulo com capa, aula com o PDF em "Materiais extras" e título no topo.
+- Imagens em `privado/cakto/`, PDFs em `privado/colecao/PDFs/` e `privado/extras/`.
 
 ## Pendências que impedem a venda
 
-- [ ] 9 links de checkout da Kiwify (8 módulos e o combo)
-- [ ] Entrega configurada na Kiwify: PDFs de cada produto e Kit de Ação em todos
+- [x] 9 links de checkout da Cakto (8 módulos e o combo)
+- [x] Entrega configurada na Cakto: PDFs de cada produto e Kit de Ação em todos
 - [ ] Nome do responsável pela venda (e CPF/CNPJ, se for exibir)
-- [ ] Canal de suporte (e-mail e/ou WhatsApp)
+- [x] Canal de suporte (`eliteeduc@gmail.com`)
+- [ ] Compra de teste (Pix num módulo de R$ 9,97, conferir o e-mail e a área de membros, pedir reembolso)
 - [ ] Domínio final (hoje é `https://intensivao-elite-ten.vercel.app`, projeto `intensivao-elite` na Vercel; para um domínio próprio, adicione-o no painel e atualize `site_url`)
 - [ ] Revisão humana do Diagnóstico Express e do Kit de Ação antes de publicar
-- [ ] Upsells: produzir os dois PDFs (ver prompt 04)
+- [x] Upsells: PDFs produzidos e conferidos, produtos criados na Cakto

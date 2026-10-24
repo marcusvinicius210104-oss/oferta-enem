@@ -52,6 +52,9 @@ const feeNote = (cls = "breve") =>
   SELLING && feeCents > 0 ? `<p class="${cls}">+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.</p>` : "";
 const upsellLive = (u) => SELLING && u.enabled && u.materials_ready && isHttps(u.checkout_url);
 const canBuy = (item) => SELLING && isHttps(item.checkout_url);
+// Upsell em um clique da Cakto: o offer-id é o código antes do "_" no link de checkout.
+const offerId = (u) => u.checkout_url.split("/").pop().split("_")[0];
+const nextUrl = (u) => (u.next ? `${cat.site_url}/${u.next}` : "members_area");
 
 // ---------- Utilidades de template ----------
 // Versão pelo conteúdo: o cache longo de /assets nunca serve CSS/JS desatualizado.
@@ -493,10 +496,13 @@ for (const u of cat.upsells) {
   <p>${esc(u.summary)}</p>
   <p class="preco">${brl(u.price_cents)} <small>pagamento único, em compra separada</small></p>
   <p>Este produto é adicional e não repete o conteúdo da coleção. Recusar não altera o acesso à sua compra.</p>
-  <div class="acoes">
-    <a class="btn btn--teal" href="${esc(u.checkout_url)}" data-checkout="${u.sku}" data-kind="upsell" data-value="${u.price_cents}" rel="noopener">Quero adicionar por ${brl(u.price_cents)}</a>
-    <a class="btn btn--linha-escura" href="/obrigado">Não, obrigado</a>
-  </div>
+  <cakto-upsell-buttons>
+    <cakto-upsell-accept bg-color="#007C83" text-color="#ffffff" offer-id="${esc(offerId(u))}" offer-type="upsell" app-base-url="https://app.cakto.com.br" upsell-accept-url="${esc(nextUrl(u))}" upsell-reject-url="${esc(nextUrl(u))}">Sim, quero adicionar por ${brl(u.price_cents)}</cakto-upsell-accept>
+    <cakto-upsell-reject upsell-reject-url="${esc(nextUrl(u))}">Não, obrigado</cakto-upsell-reject>
+  </cakto-upsell-buttons>
+  <script src="https://caktoscripts.nyc3.cdn.digitaloceanspaces.com/upsell.js"></script>
+  ${feeCents > 0 ? `<p class="breve">Pode haver a taxa de serviço de ${brl(feeCents)} da plataforma de pagamento.</p>` : ""}
+  <p class="breve">Chegou aqui sem ter acabado de comprar? <a href="${esc(u.checkout_url)}" data-checkout="${u.sku}" data-kind="upsell" data-value="${u.price_cents}" rel="noopener">Compre pelo checkout</a>.</p>
 </div></section>`
       : `<section class="secao secao--texto"><div class="wrap texto">
   <h1>Esta oferta não está disponível</h1>
