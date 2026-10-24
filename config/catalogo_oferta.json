@@ -12,7 +12,7 @@
     ]
   },
   "commerce": {
-    "enabled": false,
+    "enabled": true,
     "provider": "cakto",
     "_buyer_fee": "Taxa de serviço que a Cakto soma no checkout e o comprador paga (verificada em 23/10/2026). Use 0 se deixar de existir.",
     "buyer_fee_cents": 99
@@ -248,7 +248,7 @@
       "name": "Treino Extra de Questões",
       "price_cents": 1990,
       "summary": "60 questões originais em três blocos de 20, com gabarito explicado alternativa por alternativa e registro de segurança em cada resposta.",
-      "enabled": false,
+      "enabled": true,
       "materials_ready": true,
       "checkout_url": "https://pay.cakto.com.br/n8rybkm_1238806",
       "next": "oferta-extra-2"
@@ -259,7 +259,7 @@
       "name": "Oficina Extra de Redação",
       "price_cents": 2990,
       "summary": "Seis propostas novas, quatro redações-modelo comentadas, 15 exercícios de tese, causa, articulação, intervenção e reescrita, e folhas de treino.",
-      "enabled": false,
+      "enabled": true,
       "materials_ready": true,
       "checkout_url": "https://pay.cakto.com.br/32n9g2x_1238807",
       "next": null

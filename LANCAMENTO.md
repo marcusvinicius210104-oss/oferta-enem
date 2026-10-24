@@ -24,8 +24,8 @@ Rotas: `/`, `/exatas`, `/humanas`, `/redacao`, `/gratis`, `/obrigado`, `/termos`
 
 ## Estado atual
 
-- Vendas **desligadas** (`commerce.enabled: false`). Os botões levam ao combo e ao diagnóstico grátis; não há checkout simulado.
-- Upsells desativados: as rotas existem, mas só mostram "oferta não disponível", sem preço nem botão de pagamento.
+- Vendas **ativas** desde 24/10/2026 (`commerce.enabled: true`), com checkouts da Cakto. Compra de teste por Pix feita e reembolsada.
+- Upsells ativos em `/oferta-extra-1` e `/oferta-extra-2`, configurados como página pós-compra nos 9 produtos principais.
 - O único PDF público é `downloads/diagnostico-express-enem.pdf`. O build falha se outro PDF entrar em `dist/`.
 
 ## Como abrir as vendas (Kiwify)
@@ -70,9 +70,9 @@ Não aponte a Cakto para `/oferta-extra-1` antes do deploy: com o upsell desliga
 
 - [x] 9 links de checkout da Cakto (8 módulos e o combo)
 - [x] Entrega configurada na Cakto: PDFs de cada produto e Kit de Ação em todos
-- [ ] Nome do responsável pela venda (e CPF/CNPJ, se for exibir)
+- [x] Nome do responsável pela venda (Intensivão Elite; CPF/CNPJ ainda não exibido)
 - [x] Canal de suporte (`eliteeduc@gmail.com`)
-- [ ] Compra de teste (Pix num módulo de R$ 9,97, conferir o e-mail e a área de membros, pedir reembolso)
+- [x] Compra de teste (Pix num módulo de R$ 9,97, conferir o e-mail e a área de membros, pedir reembolso)
 - [ ] Domínio final (hoje é `https://intensivao-elite-ten.vercel.app`, projeto `intensivao-elite` na Vercel; para um domínio próprio, adicione-o no painel e atualize `site_url`)
 - [ ] Revisão humana do Diagnóstico Express e do Kit de Ação antes de publicar
 - [x] Upsells: PDFs produzidos e conferidos, produtos criados na Cakto
