@@ -538,6 +538,46 @@ for (const u of cat.upsells) {
   });
 }
 
+// Quiz de qualificação (FUNIL_QUIZ.md): perguntas em config/quiz.json, produtos e preços do catálogo.
+const quiz = JSON.parse(readFileSync(join(ROOT, "config/quiz.json"), "utf8"));
+const quizItem = (p, extra = {}) => ({
+  sku: p.sku,
+  name: p.name,
+  price: brl(p.price_cents),
+  price_cents: p.price_cents,
+  checkout: canBuy(p) ? p.checkout_url : null,
+  ...extra,
+});
+const quizDados = {
+  questions: quiz.questions,
+  tiers: quiz.tiers,
+  products: Object.fromEntries(products.map((p) => [p.sku, quizItem(p, { cover: p.cover, summary: p.summary, facts: p.facts, volume: p.volume })])),
+  combo: quizItem(combo, { saving: brl(savingCents), separate: brl(sumCents), pages: totalPages, count: combo.includes.length }),
+  fee: SELLING && feeCents > 0 ? `+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.` : null,
+  diagnostic: cat.free_sample.file,
+};
+pages["quiz/index.html"] = page({
+  title: "Quiz: por onde começar a revisão | Intensivão Elite",
+  description: quiz.intro.sub,
+  path: "/quiz",
+  noindex: true,
+  pageType: "quiz",
+  body: `
+<section class="secao quiz" aria-labelledby="t-quiz">
+  <div class="wrap quiz__in" data-quiz>
+    <div class="quiz__tela" data-quiz-intro>
+      <p class="etiqueta etiqueta--escura">Quiz rápido</p>
+      <h1 id="t-quiz">${esc(quiz.intro.title)}</h1>
+      <p class="quiz__sub">${esc(quiz.intro.sub)}</p>
+      <button type="button" class="btn btn--teal btn--grande" data-quiz-iniciar>${esc(quiz.intro.cta)}</button>
+      <noscript><p>O quiz precisa de JavaScript. <a href="/#modulos">Veja todos os módulos</a>.</p></noscript>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="quiz-dados">${JSON.stringify(quizDados).replace(/</g, "\\u003c")}</script>
+<script type="module" src="${asset("assets/js/quiz.js")}"></script>`,
+});
+
 pages["obrigado/index.html"] = simples({
   title: "Próximos passos | Intensivão Elite",
   description: "Informações sobre o acesso aos materiais depois da compra.",

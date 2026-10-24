@@ -1,0 +1,85 @@
+{
+  "_leia": "Perguntas e pontuação do quiz de /quiz (ver FUNIL_QUIZ.md). 'score' soma pontos por SKU; 'area' marca o módulo de área para o formato 'questoes'; 'tier' rebaixa o nível do lead. Preços e links vêm do catálogo.",
+  "intro": {
+    "title": "Descubra por onde começar a sua revisão",
+    "sub": "7 perguntas rápidas, cerca de 1 minuto. No fim, você recebe uma recomendação com base nas suas respostas.",
+    "cta": "Começar o quiz"
+  },
+  "questions": [
+    {
+      "id": "prazo",
+      "title": "Qual ENEM você vai fazer?",
+      "options": [
+        { "id": "2026", "label": "ENEM 2026 (8 e 15 de novembro)" },
+        { "id": "depois", "label": "Ainda não sei / ano que vem", "tier": "frio" }
+      ]
+    },
+    {
+      "id": "fase",
+      "title": "Em que ponto você está?",
+      "options": [
+        { "id": "revisar", "label": "Já estudei quase tudo e preciso revisar" },
+        { "id": "lacunas", "label": "Estudei partes e tenho lacunas" },
+        { "id": "comecando", "label": "Estou começando agora", "tier": "morno", "score": { "plano": 1 } }
+      ]
+    },
+    {
+      "id": "area",
+      "title": "Qual área mais preocupa você?",
+      "hint": "Escolha até 2.",
+      "multi": 2,
+      "options": [
+        { "id": "exatas", "label": "Matemática, Física e Química", "score": { "exatas": 3 }, "area": "exatas" },
+        { "id": "humanas", "label": "História, Geografia, Filosofia e Sociologia", "score": { "humanas": 3 }, "area": "humanas" },
+        { "id": "biologia", "label": "Biologia e leitura", "score": { "biologia-natureza": 3 }, "area": "biologia-natureza" },
+        { "id": "redacao", "label": "Redação", "score": { "redacao": 3 }, "area": "redacao" },
+        { "id": "todas", "label": "Todas um pouco", "score": { "combo-revisao": 5 }, "exclusive": true }
+      ],
+      "two_picks_score": { "combo-revisao": 2 }
+    },
+    {
+      "id": "trava",
+      "title": "O que mais atrapalha você hoje?",
+      "options": [
+        { "id": "ordem", "label": "Não sei o que revisar primeiro", "score": { "plano": 2 } },
+        { "id": "esqueco", "label": "Esqueço o que estudei", "score": { "flashcards": 2 } },
+        { "id": "formulas", "label": "Confundo as fórmulas", "score": { "formulas": 2 } },
+        { "id": "materia", "label": "Me perco em matéria grande", "score": { "mapas": 2 } },
+        { "id": "redacao", "label": "Travo na redação", "score": { "redacao": 2 } }
+      ]
+    },
+    {
+      "id": "tempo",
+      "title": "Quanto tempo por dia você tem até a prova?",
+      "options": [
+        { "id": "menos2", "label": "Menos de 2h", "note": "Com menos de 2h por dia, foque no essencial: um material por vez, começando pelo seu ponto mais fraco." },
+        { "id": "2h", "label": "Cerca de 2h", "note": "Com cerca de 2h por dia, dá para revisar um tema e fazer as questões comentadas no mesmo dia." },
+        { "id": "4h", "label": "Cerca de 4h", "score": { "combo-revisao": 1 }, "note": "Com cerca de 4h por dia, dá para alternar duas áreas por dia e ainda revisar o que errou." },
+        { "id": "6h", "label": "6h ou mais", "score": { "combo-revisao": 1 }, "note": "Com 6h ou mais por dia, dá para seguir o plano de 14 dias completo, passando por todas as áreas." }
+      ]
+    },
+    {
+      "id": "formato",
+      "title": "Como você prefere revisar?",
+      "options": [
+        { "id": "questoes", "label": "Explicação com questões comentadas", "area_bonus": 1 },
+        { "id": "cartoes", "label": "Cartões de pergunta e resposta", "score": { "flashcards": 1 } },
+        { "id": "mapas", "label": "Mapas e resumos visuais", "score": { "mapas": 1 } },
+        { "id": "formulas", "label": "Lista de fórmulas com exemplos", "score": { "formulas": 1 } }
+      ]
+    },
+    {
+      "id": "foco",
+      "title": "O que faz mais sentido para você agora?",
+      "options": [
+        { "id": "um", "label": "Focar no meu ponto mais fraco" },
+        { "id": "tudo", "label": "Revisar tudo de forma organizada", "score": { "combo-revisao": 3 } }
+      ]
+    }
+  ],
+  "tiers": {
+    "quente": null,
+    "morno": "Você contou que está começando agora. Este material é uma revisão de fundamentos, não um curso completo do ensino médio. Para aproveitar melhor, faça primeiro o Diagnóstico grátis e use o Plano de 14 dias para escolher o essencial.",
+    "frio": "Como a sua prova não é agora, comece sem gastar nada: o Diagnóstico grátis mostra o que você já domina e o que precisa revisar."
+  }
+}

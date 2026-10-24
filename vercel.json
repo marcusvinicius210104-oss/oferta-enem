@@ -10,7 +10,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
     },
     {
-      "source": "/(obrigado|oferta-extra-1|oferta-extra-2)",
+      "source": "/(obrigado|oferta-extra-1|oferta-extra-2|quiz)",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
     },
     {

@@ -71,6 +71,14 @@ for (const barra of document.querySelectorAll("[data-contagem]")) iniciarContage
 const page = document.body.dataset.page;
 if (page === "offer") track("view_offer", { page_path: location.pathname });
 
+// Vindo do quiz (/?rec=sku): destaca o produto recomendado.
+const rec = new URLSearchParams(location.search).get("rec");
+const alvoRec = rec && (rec === "combo-revisao" ? document.getElementById("combo") : document.getElementById(`modulo-${rec}`));
+if (alvoRec) {
+  alvoRec.classList.add("is-recomendado");
+  addEventListener("load", () => alvoRec.scrollIntoView({ block: "start" }));
+}
+
 // Flashcard da demonstração
 for (const card of document.querySelectorAll("[data-flash]")) {
   const btn = card.querySelector("button");
@@ -128,7 +136,7 @@ document.addEventListener("click", (e) => {
     const sku = checkout.dataset.checkout;
     const value = Number(checkout.dataset.value) / 100;
     track(checkout.dataset.kind === "combo" ? "select_combo" : "select_module", { item_id: sku });
-    track("begin_checkout", { item_id: sku, value, currency: "BRL" });
+    track("begin_checkout", { item_id: sku, value, currency: "BRL", ...(checkout.dataset.origem && { origem: checkout.dataset.origem }) });
     return;
   }
   if (el.matches("[data-select='combo']")) track("select_combo", { item_id: "combo-revisao" });
