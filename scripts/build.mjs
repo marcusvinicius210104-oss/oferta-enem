@@ -374,8 +374,27 @@ const comoRecebe = () => `
       <li><span>2</span><h3>Pague</h3><p>Você conclui o pagamento único no checkout seguro da plataforma de pagamento.</p></li>
       <li><span>3</span><h3>Receba</h3><p>${esc(cat.delivery.summary)}</p></li>
     </ol>
+    ${relatos()}
   </div>
 </section>`;
+
+// Relatos reais das turmas anteriores do método (ver social_proof._fonte no catálogo).
+const relatos = () => {
+  const sp = cat.social_proof;
+  if (!sp?.testimonials?.length) return "";
+  const estrelas = (n) => `<span class="relato__estrelas" role="img" aria-label="${n} de 5 estrelas">${"★".repeat(n)}</span>`;
+  return `
+    <div class="relatos">
+      <p class="relatos__numero"><strong>+${sp.students_min}</strong> alunos já estudaram com o método Intensivão Elite</p>
+      <p class="relatos__nota">Relatos de alunos das turmas anteriores do método, antes desta versão em PDF. Cada resultado depende da dedicação e do ponto de partida de cada aluno.</p>
+      <div class="relatos__grade">
+        ${sp.testimonials.map((t) => `<figure class="relato">
+          <figcaption><strong>${esc(t.name)}</strong>${estrelas(t.stars)}<small>${esc(t.course)} • ${esc(t.school)}</small></figcaption>
+          <blockquote>“${esc(t.text)}”</blockquote>
+        </figure>`).join("")}
+      </div>
+    </div>`;
+};
 
 const FAQ = () => [
   ["O que eu recebo?", `PDFs, conforme o módulo ou o combo escolhido, e o ${cat.bonus.name} como brinde em qualquer compra.`],

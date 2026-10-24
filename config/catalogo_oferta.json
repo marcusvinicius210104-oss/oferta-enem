@@ -228,6 +228,47 @@
       "plano"
     ]
   },
+  "social_proof": {
+    "_fonte": "Informado pelo dono da oferta em 24/10/2026: alunos e aprovações das turmas anteriores do método Intensivão Elite (parceiro), antes da versão em PDF. Use só relatos reais e autorizados.",
+    "students_min": 500,
+    "testimonials": [
+      {
+        "name": "Maria Cristina",
+        "course": "Medicina",
+        "school": "UFPB",
+        "stars": 5,
+        "text": "Material auxiliar de qualidade. Usei no meu ano para ser aprovada, e eles entregam o que realmente cai no ENEM."
+      },
+      {
+        "name": "Daniel Maia",
+        "course": "Direito",
+        "school": "USP",
+        "stars": 5,
+        "text": "Me ajudou muito a montar meu repertório de redação, e conquistei o 900+ estudando focado somente no material. Obrigado, Intensivão Elite!"
+      },
+      {
+        "name": "Vinicius Rodrigues",
+        "course": "Odontologia",
+        "school": "UFRJ",
+        "stars": 5,
+        "text": "Um dos principais pilares para eu economizar tempo e otimizar meus resultados."
+      },
+      {
+        "name": "Erick Matheus",
+        "course": "Ciências Contábeis",
+        "school": "UFMG",
+        "stars": 5,
+        "text": "Terminei a escola sem saber qual era meu objetivo, estudei com esse material faltando 2 semanas para o ENEM e consegui a minha sonhada aprovação."
+      },
+      {
+        "name": "Sofia Nascimento",
+        "course": "Nutrição",
+        "school": "UFPE",
+        "stars": 5,
+        "text": "Um dos meus sonhos era conquistar a aprovação na federal. Agradeço ao professor John por todo o auxílio e a parceria dentro do Intensivão Elite."
+      }
+    ]
+  },
   "bonus": {
     "sku": "kit-acao",
     "name": "Kit de Ação do Aluno",
