@@ -72,7 +72,7 @@ O nível vai no evento `quiz_complete`. Com o Pixel instalado, dá para otimizar
 
 ## O que falta para rodar as campanhas
 
-- [ ] **Pixel do Meta (e/ou Google Tag Manager):** o site ainda não tem nenhum pixel instalado, só o `dataLayer`. Preciso do ID do Pixel para ligar os eventos aos anúncios.
+- [x] **Pixel do Meta** `1476266471090724` instalado no site (ID em `tracking` no catálogo). Eventos: PageView, ViewContent, QuizStart, QuizComplete, Lead (quiz quente), DownloadDiagnostico, CliqueCheckout.
 - [ ] Pixel também na Cakto (Configurar Pixel), para a compra ser contada pela plataforma.
-- [ ] Construir `/quiz` conforme este documento.
+- [x] `/quiz` construído e publicado.
 - [ ] Criativos e textos dos anúncios das duas campanhas.
