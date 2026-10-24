@@ -75,4 +75,4 @@ O nível vai no evento `quiz_complete`. Com o Pixel instalado, dá para otimizar
 - [x] **Pixel do Meta** `1476266471090724` instalado no site (ID em `tracking` no catálogo). Eventos: PageView, ViewContent, QuizStart, QuizComplete, Lead (quiz quente), DownloadDiagnostico, CliqueCheckout.
 - [x] Pixel `1476266471090724` nos 11 produtos da Cakto (Configurar Pixel). Padrão da Cakto mantido: "Purchase" também ao gerar Pix ou boleto.
 - [x] `/quiz` construído e publicado.
-- [ ] Criativos e textos dos anúncios das duas campanhas.
+- [x] Textos dos anúncios das duas campanhas em `ANUNCIOS.md` (criativos ainda a produzir).
