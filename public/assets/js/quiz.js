@@ -10,6 +10,7 @@ const respostas = {}; // id da pergunta -> [ids das opções]
 let passo = 0;
 let comecou = false;
 
+// O app.js repassa estes eventos ao Pixel do Meta.
 function track(event, params = {}) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });

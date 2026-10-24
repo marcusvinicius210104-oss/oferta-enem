@@ -17,6 +17,10 @@
     "_buyer_fee": "Taxa de serviço que a Cakto soma no checkout e o comprador paga (verificada em 23/10/2026). Use 0 se deixar de existir.",
     "buyer_fee_cents": 99
   },
+  "tracking": {
+    "_leia": "IDs públicos de medição. O Pixel do Meta recebe PageView em todas as páginas e os eventos mapeados em assets/js/app.js. Compra (Purchase) só pela Cakto.",
+    "meta_pixel_id": "1476266471090724"
+  },
   "seller": {
     "name": "Intensivão Elite",
     "document": null

@@ -1,11 +1,34 @@
-// Interações da landing e eventos de medição (sem serviço pago e sem dados pessoais).
-// Eventos: view_offer, select_module, select_combo, download_diagnostic, begin_checkout.
-// purchase NÃO é disparado aqui: só pode vir de confirmação confiável da plataforma.
+// Interações da landing e eventos de medição (sem dados pessoais).
+// Eventos: view_offer, select_module, select_combo, download_diagnostic, begin_checkout e os do quiz.
+// purchase NÃO é disparado aqui: só pode vir de confirmação confiável da plataforma (Cakto).
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
+// Eventos do dataLayer repassados ao Pixel do Meta (quando instalado no <head>).
+// InitiateCheckout e Purchase ficam com o pixel da Cakto, para não contar em dobro.
+const PARA_META = {
+  view_offer: (e) => ["track", "ViewContent", { content_name: e.page_path }],
+  quiz_start: () => ["trackCustom", "QuizStart"],
+  quiz_complete: (e) => ["trackCustom", "QuizComplete", { lead_tier: e.lead_tier, content_name: e.recommendation }],
+  download_diagnostic: () => ["trackCustom", "DownloadDiagnostico"],
+  begin_checkout: (e) => ["trackCustom", "CliqueCheckout", { content_ids: [e.item_id], value: e.value, currency: e.currency, origem: e.origem || "site" }],
+};
+
+function paraMeta(e) {
+  if (typeof window.fbq !== "function" || !PARA_META[e.event]) return;
+  window.fbq(...PARA_META[e.event](e));
+  // Lead só para quem termina o quiz com perfil quente (ENEM 2026 e já estudou).
+  if (e.event === "quiz_complete" && e.lead_tier === "quente") window.fbq("track", "Lead", { content_name: e.recommendation });
+}
+
+window.dataLayer = window.dataLayer || [];
+const pushOriginal = window.dataLayer.push.bind(window.dataLayer);
+window.dataLayer.push = (...itens) => {
+  for (const e of itens) if (e && e.event) paraMeta(e);
+  return pushOriginal(...itens);
+};
+
 function track(event, params = {}) {
-  window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });
 }
 

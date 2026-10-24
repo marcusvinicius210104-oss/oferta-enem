@@ -38,6 +38,8 @@ if (SELLING) {
   if (!cat.seller.name) erros.push("seller.name é obrigatório para vender.");
   if (!cat.support.email && !cat.support.whatsapp) erros.push("Informe ao menos um canal de suporte.");
 }
+const pixelId = cat.tracking?.meta_pixel_id ?? null;
+if (pixelId !== null && !/^\d{10,20}$/.test(pixelId)) erros.push("tracking.meta_pixel_id deve ter só dígitos.");
 for (const u of cat.upsells) {
   if (u.enabled && !(u.materials_ready && isHttps(u.checkout_url) && SELLING))
     erros.push(`Upsell ${u.sku} habilitado sem material pronto, checkout HTTPS ou vendas ativas.`);
@@ -135,6 +137,17 @@ const footer = () => `
   </div>
 </footer>`;
 
+// Código base do Pixel do Meta (o mesmo do Gerenciador de Eventos), com o ID do catálogo.
+const metaPixel = () => `<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '${pixelId}');
+fbq('track', 'PageView');
+</script>`;
+const metaPixelNoscript = () =>
+  pixelId ? `<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${pixelId}&amp;ev=PageView&amp;noscript=1"></noscript>` : "";
+
 function head({ title, description, path, noindex = false, preload }) {
   return `<!doctype html>
 <html lang="pt-BR">
@@ -158,13 +171,14 @@ ${noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
 ${preload ? `<link rel="preload" as="image" href="/assets/img/capas/${preload}-360.webp" imagesrcset="/assets/img/capas/${preload}-360.webp 360w, /assets/img/capas/${preload}-720.webp 720w" imagesizes="(max-width: 640px) 45vw, 220px">` : ""}
 <link rel="stylesheet" href="${asset("assets/css/site.css")}">
+${pixelId ? metaPixel() : ""}
 <script type="module" src="${asset("assets/js/app.js")}"></script>
 </head>`;
 }
 
 function page({ title, description, path, noindex, preload, pageType, body }) {
   return `${head({ title, description, path, noindex, preload })}
-<body data-page="${pageType}">
+<body data-page="${pageType}">${metaPixelNoscript()}
 ${header()}
 <main id="conteudo">
 ${body}
@@ -631,11 +645,13 @@ pages["privacidade/index.html"] = simples({
   <h2>Responsável</h2>
   <p>${sellerLine()}</p>
   <h2>O que esta página coleta</h2>
-  <p>Esta página não tem formulário, não pede cadastro e não guarda dados pessoais. O diagnóstico grátis é baixado sem informar e-mail.</p>
+  <p>Esta página não tem formulário, não pede cadastro e não pede nome, e-mail ou telefone. O diagnóstico grátis é baixado sem informar e-mail.</p>
   <h2>Serviços de terceiros</h2>
   <ul>
     <li><strong>Hospedagem:</strong> o provedor de hospedagem registra dados técnicos de acesso, como endereço IP e navegador, para operar e proteger o site.</li>
     <li><strong>Fontes:</strong> as fontes do texto são carregadas do Google Fonts, que recebe dados técnicos da requisição.</li>
+    <li><strong>Pixel do Meta:</strong> usamos o Pixel do Meta (Facebook e Instagram) para medir visitas e ações no site, como abrir a página de vendas, concluir o quiz, baixar o diagnóstico e clicar em comprar, e para mostrar anúncios a quem já visitou. O Meta recebe dados técnicos do navegador e cookies, conforme a <a href="https://www.facebook.com/privacy/policy" rel="noopener">política de privacidade dele</a>. Você pode limitar isso nas configurações de anúncios da sua conta Meta ou bloqueando cookies de terceiros no navegador.</li>
+    <li><strong>Quiz:</strong> as respostas ficam no seu navegador. Só o resultado (produto recomendado e perfil de revisão) é enviado como evento de medição, sem nome, e-mail ou telefone.</li>
     <li><strong>Pagamento:</strong> ao clicar em comprar, você vai para o checkout da plataforma de pagamento. Os dados informados lá são tratados por ela, conforme a política de privacidade dela, e por nós apenas para entregar o produto e prestar suporte.</li>
   </ul>
   <h2>Seus direitos</h2>
