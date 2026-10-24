@@ -315,6 +315,11 @@ function comboSection() {
       <p class="etiqueta">Melhor custo</p>
       <h2 id="t-combo">Os oito módulos em uma compra</h2>
       <p class="combo__lead">Exatas, Humanas, Biologia e Natureza, Redação, fórmulas, flashcards, mapas e o plano de 14 dias: ${totalPages} páginas de revisão nos oito PDFs, com o Kit de Ação do Aluno de brinde.</p>
+      <div class="leque leque--combo" aria-hidden="true">
+        <div class="leque__c leque__c--e">${cover("exatas", "", {})}</div>
+        <div class="leque__c leque__c--d">${cover("redacao", "", {})}</div>
+        <div class="leque__c leque__c--m">${cover("plano", "", {})}</div>
+      </div>
       <div class="combo__preco">
         <p class="combo__de">Separados: <s>${brl(sumCents)}</s></p>
         <p class="combo__por">${brl(combo.price_cents)}</p>

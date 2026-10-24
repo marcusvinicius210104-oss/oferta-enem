@@ -222,6 +222,8 @@ a.marca:hover { color: #fff; }
 /* ---------- Combo ---------- */
 .combo { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 .combo__lead { color: rgba(246, 241, 231, 0.86); font-size: 1.08rem; }
+.leque--combo { width: min(100%, 340px); margin: 28px auto 8px; }
+@media (max-width: 560px) { .leque--combo { width: min(78%, 260px); } }
 .combo__preco { border: 1px solid rgba(227, 183, 101, 0.4); border-radius: var(--raio); padding: 22px 24px; margin: 24px 0; background: rgba(255, 255, 255, 0.03); }
 .combo__de { margin: 0; color: rgba(246, 241, 231, 0.75); }
 .combo__por { font: 900 clamp(2.6rem, 2rem + 2.4vw, 3.6rem)/1 var(--titulo); color: var(--gold); margin: 6px 0 8px; }
