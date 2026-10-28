@@ -145,7 +145,9 @@ function resultado() {
   const ehCombo = principal === COMBO;
   const aviso = D.tiers[tier];
   const diag = `<a class="btn ${tier === "quente" ? "btn--linha-escura" : "btn--teal"}" href="${esc(D.diagnostic)}" download data-download="diagnostico">Baixar o Diagnóstico grátis (PDF)</a>`;
-  const taxa = D.fee ? `<p class="breve">${esc(D.fee)}</p>` : "";
+  // Quente: a compra é a única ação principal. Morno: aviso honesto depois da oferta. Frio: diagnóstico primeiro.
+  const avisoHtml = aviso ? `<div class="quiz__aviso"><p>${esc(aviso)}</p>${diag}</div>` : "";
+  const taxa =D.fee ? `<p class="breve">${esc(D.fee)}</p>` : "";
 
   const cartaoPrincipal = ehCombo
     ? `<article class="quiz__rec">
@@ -182,12 +184,12 @@ function resultado() {
       <p class="etiqueta etiqueta--escura">Seu resultado</p>
       <h1>Por onde começar a sua revisão</h1>
       <p class="quiz__sub">Recomendação com base nas suas respostas. ${nota ? esc(nota) : ""}</p>
-      ${aviso ? `<div class="quiz__aviso"><p>${esc(aviso)}</p>${diag}</div>` : ""}
+      ${tier === "frio" ? avisoHtml : ""}
       ${cartaoPrincipal}
+      ${tier === "morno" ? avisoHtml : ""}
       ${alternativa}
       <div class="quiz__fim">
         <a href="${esc(paginaCompleta(principal))}">Ver a página completa</a>
-        ${aviso ? "" : `<a href="${esc(D.diagnostic)}" download data-download="diagnostico">Baixar o Diagnóstico grátis</a>`}
         <button type="button" class="quiz__voltar" data-refazer>Refazer o quiz</button>
       </div>
     </div>`);

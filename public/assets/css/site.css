@@ -365,3 +365,9 @@ a.marca:hover { color: #fff; }
   .quiz__rec-capas { width: 140px; }
   .quiz__rec .btn--grande { width: 100%; justify-content: center; }
 }
+
+/* Páginas de módulo (anúncio direto): capas menores no celular para o preço e o botão aparecerem na primeira tela. */
+@media (max-width: 560px) {
+  .hero--foco .leque { width: min(46%, 160px); }
+  .hero--foco h1 { font-size: clamp(1.9rem, 8.5vw, 2.4rem); }
+}

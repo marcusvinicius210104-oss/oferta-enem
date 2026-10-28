@@ -197,27 +197,42 @@ function buyButton(item, { label, kind = "module", cls = "btn" } = {}) {
   return null;
 }
 
+// Página de um módulo (anúncio direto): compra do módulo logo no topo, combo como segunda opção.
+function heroFocoAcoes(p) {
+  const compra = buyButton(p, { label: `Comprar por ${brl(p.price_cents)}`, cls: "btn btn--ouro btn--grande" });
+  return `
+      <p class="hero__oferta"><strong>${esc(p.name)}</strong> em PDF por <strong>${brl(p.price_cents)}</strong>, pagamento único e acesso na hora.</p>
+      <div class="acoes">
+        ${compra || `<a class="btn btn--ouro" href="#modulo-${esc(p.sku)}">Ver o módulo</a>`}
+        <a class="btn btn--linha" href="#combo" data-select="combo">Ou os oito por ${brl(combo.price_cents)}</a>
+      </div>
+      ${p.sku === "exatas" ? `<p class="hero__gratis"><a href="#amostra">Ver uma página do material ↓</a></p>` : ""}`;
+}
+
 function hero(v) {
   const center = v.focus ? bySku[v.focus].cover : "plano";
   const sides = ["exatas", "redacao", "humanas"].filter((s) => s !== center).slice(0, 2);
-  return `
-<section class="hero">
-  <div class="wrap hero__in">
-    <div class="hero__texto">
-      <p class="etiqueta">${esc(v.eyebrow)}</p>
-      <h1>${v.title}</h1>
-      <p class="hero__sub">${esc(v.sub)}</p>
+  const acoes = v.focus
+    ? heroFocoAcoes(bySku[v.focus])
+    : `
       <p class="hero__oferta">Módulos por <strong>${brl(997)}</strong>. Ou os oito por <strong>${brl(combo.price_cents)}</strong>.</p>
       <div class="acoes">
         <a class="btn btn--ouro" href="#combo" data-select="combo">Quero o combo de revisão</a>
         <a class="btn btn--linha" href="#modulos">Escolher meu módulo</a>
-      </div>
+      </div>`;
+  return `
+<section class="hero${v.focus ? " hero--foco" : ""}">
+  <div class="wrap hero__in">
+    <div class="hero__texto">
+      <p class="etiqueta">${esc(v.eyebrow)}</p>
+      <h1>${v.title}</h1>
+      <p class="hero__sub">${esc(v.sub)}</p>${acoes}
       <ul class="selos" aria-label="Formato">
         <li>${icon("file")}Revisão em PDF</li>
         <li>${icon("check")}Pagamento único</li>
         <li>${icon("cal")}Plano de 14 dias</li>
       </ul>
-      <p class="hero__gratis"><a href="/gratis">Faça o diagnóstico grátis e descubra por onde começar.</a></p>
+      ${v.focus ? "" : `<p class="hero__gratis"><a href="/gratis">Faça o diagnóstico grátis e descubra por onde começar.</a></p>`}
     </div>
     <div class="hero__capas" aria-hidden="${v.focus ? "false" : "true"}">
       <div class="leque">
@@ -285,6 +300,27 @@ const demo = () => `
     </div>
   </div>
 </section>`;
+
+// Logo abaixo do topo em /exatas: a página real do tema 01 e o que vem no PDF, com a compra ao lado.
+function amostraFoco(focus) {
+  if (focus !== "exatas") return "";
+  const p = bySku[focus];
+  const compra = buyButton(p, { label: `Comprar por ${brl(p.price_cents)}`, cls: "btn btn--teal btn--grande" });
+  return `
+<section class="secao secao--clara" id="amostra" aria-labelledby="t-amostra">
+  <div class="wrap demo">
+    <div>
+      <p class="etiqueta etiqueta--escura">O que você recebe</p>
+      <h2 id="t-amostra">Veja uma página de verdade do ${esc(p.name)}</h2>
+      <ul class="fatos">${p.facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
+      ${compra ? `<div class="acoes">${compra}</div>` : ""}
+    </div>
+    <div class="amostras amostras--uma">
+      <figure><a href="/assets/img/amostras/exatas-tema-01.webp" target="_blank" rel="noopener" aria-label="Ampliar: Amostra • Exatas na Prática, tema 01"><img src="/assets/img/amostras/exatas-tema-01.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Amostra: página do tema 01 do volume Exatas na Prática, sobre porcentagem e variações sucessivas"></a><figcaption>Tema 01, porcentagem • toque para ampliar</figcaption></figure>
+    </div>
+  </div>
+</section>`;
+}
 
 function moduleCard(p, focus) {
   const buy = buyButton(p, { label: `Comprar por ${brl(p.price_cents)}`, kind: "module", cls: "btn btn--teal btn--bloco" });
@@ -442,7 +478,7 @@ function landing(v) {
     path: v.path,
     preload: v.focus ? bySku[v.focus].cover : "plano",
     pageType: "offer",
-    body: [hero(v), prova(), necessidades(), demo(), modulos(v.focus), comboSection(), brinde(), gratisBox(), comoRecebe(), faq()].join("\n"),
+    body: [hero(v), amostraFoco(v.focus), prova(),necessidades(), demo(), modulos(v.focus), comboSection(), brinde(), gratisBox(), comoRecebe(), faq()].join("\n"),
   });
 }
 
