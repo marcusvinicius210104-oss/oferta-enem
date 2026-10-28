@@ -50,8 +50,8 @@ if (erros.length) {
 }
 // Taxa cobrada do comprador pela plataforma: precisa ficar visível antes do clique de compra.
 const feeCents = cat.commerce.buyer_fee_cents ?? 0;
-const feeNote = (cls = "breve") =>
-  SELLING && feeCents > 0 ? `<p class="${cls}">+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.</p>` : "";
+// A taxa da plataforma não aparece mais embaixo dos botões (pedido do Marcus, 28/10); fica explicada no FAQ e no checkout.
+const feeNote = () => "";
 const upsellLive = (u) => SELLING && u.enabled && u.materials_ready && isHttps(u.checkout_url);
 const canBuy = (item) => SELLING && isHttps(item.checkout_url);
 // Upsell em um clique da Cakto: o offer-id é o código antes do "_" no link de checkout.
@@ -204,6 +204,7 @@ function heroFocoAcoes(p) {
   const porModulo = Math.round(combo.price_cents / combo.includes.length);
   return `
       <div class="vantagem">
+        <div class="vantagem__capas" role="img" aria-label="As capas dos 8 módulos do combo">${combo.includes.map((sku) => cover(bySku[sku].cover, "", { sizes: "90px" })).join("")}</div>
         <p class="vantagem__selo">Mais vantagem</p>
         <p class="vantagem__t">${esc(p.name)} + os outros 7 módulos por <strong>${brl(combo.price_cents)}</strong></p>
         <p class="vantagem__d">Sai a <strong>${brl(porModulo)} por módulo</strong>, em vez de ${brl(p.price_cents)}. Você economiza <strong>${brl(savingCents)}</strong> e revisa todas as áreas e a redação com o Plano de 14 dias.</p>
@@ -578,7 +579,7 @@ const quizDados = {
   tiers: quiz.tiers,
   products: Object.fromEntries(products.map((p) => [p.sku, quizItem(p, { cover: p.cover, summary: p.summary, facts: p.facts, volume: p.volume })])),
   combo: quizItem(combo, { saving: brl(savingCents), separate: brl(sumCents), pages: totalPages, count: combo.includes.length, per_module: brl(Math.round(combo.price_cents / combo.includes.length)) }),
-  fee: SELLING && feeCents > 0 ? `+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.` : null,
+  fee: null,
 };
 pages["quiz/index.html"] = page({
   title: "Quiz: por onde começar a revisão | Intensivão Elite",
