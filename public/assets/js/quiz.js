@@ -144,7 +144,7 @@ function resultado() {
   const m = D.products[melhor];
   const ehCombo = principal === COMBO;
   const aviso = D.tiers[tier];
-  const diag = `<a class="btn ${tier === "quente" ? "btn--linha-escura" : "btn--teal"}" href="${esc(D.diagnostic)}" download data-download="diagnostico">Baixar o Diagnóstico grátis (PDF)</a>`;
+  const diag = `<a class="btn ${tier === "quente" ? "btn--linha-escura" : "btn--teal"}" href="${esc(D.diagnostic)}" download data-download="diagnostico">Baixar o Diagnóstico de conhecimento (PDF)</a>`;
   // Quente: a compra é a única ação principal. Morno: aviso honesto depois da oferta. Frio: diagnóstico primeiro.
   const avisoHtml = aviso ? `<div class="quiz__aviso"><p>${esc(aviso)}</p>${diag}</div>` : "";
   const taxa =D.fee ? `<p class="breve">${esc(D.fee)}</p>` : "";

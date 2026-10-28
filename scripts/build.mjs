@@ -115,7 +115,7 @@ const header = () => `
     <nav class="topo__nav" aria-label="Seções">
       <a href="/#modulos">Módulos</a>
       <a href="/#combo">Combo</a>
-      <a href="/gratis">Diagnóstico grátis</a>
+      <a href="/gratis">Diagnóstico de conhecimento</a>
     </nav>
   </div>
 </header>`;
@@ -130,7 +130,7 @@ const footer = () => `
     </div>
     <nav aria-label="Links institucionais">
       <a href="/#faq">Perguntas frequentes</a>
-      <a href="/gratis">Diagnóstico grátis</a>
+      <a href="/gratis">Diagnóstico de conhecimento</a>
       <a href="/termos">Termos de uso e reembolso</a>
       <a href="/privacidade">Privacidade</a>
     </nav>
@@ -238,7 +238,7 @@ function hero(v) {
         <li>${icon("check")}Pagamento único</li>
         <li>${icon("cal")}Plano de 14 dias</li>
       </ul>
-      ${v.focus ? "" : `<p class="hero__gratis"><a href="/gratis">Faça o diagnóstico grátis e descubra por onde começar.</a></p>`}
+      ${v.focus ? "" : `<p class="hero__gratis"><a href="/gratis">Faça o diagnóstico de conhecimento e descubra por onde começar.</a></p>`}
     </div>
     <div class="hero__capas" aria-hidden="${v.focus ? "false" : "true"}">
       <div class="leque">
@@ -382,7 +382,7 @@ function comboSection() {
         <p class="combo__eco">Economize ${brl(savingCents)} (cerca de ${savingPct}%)</p>
         <p class="combo__nota">Pagamento único. O valor “separados” é a soma dos oito módulos avulsos.</p>
       </div>
-      ${buy ? buy + feeNote("breve breve--claro") : `<a class="btn btn--ouro btn--grande" href="/gratis" data-select="combo">Comece pelo diagnóstico grátis</a><p class="breve breve--claro">As vendas abrem em breve.</p>`}
+      ${buy ? buy + feeNote("breve breve--claro") : `<a class="btn btn--ouro btn--grande" href="/gratis" data-select="combo">Comece pelo diagnóstico de conhecimento</a><p class="breve breve--claro">As vendas abrem em breve.</p>`}
     </div>
     <ul class="combo__lista">
       ${combo.includes.map((sku) => `<li><span class="combo__vol">${bySku[sku].volume}</span><span>${esc(bySku[sku].name)}<small>${esc(bySku[sku].facts.join(" • "))}</small></span></li>`).join("")}
@@ -414,7 +414,7 @@ const gratisBox = () => `
       <p>O <strong>Diagnóstico Express ENEM</strong> traz as 12 questões de fundamentos do volume 08 com gabarito comentado e indica onde revisar cada dificuldade. Leva de 25 a 35 minutos.</p>
       <p class="aviso">É uma amostra da coleção. Não prevê nota e não cobre a prova inteira.</p>
       <div class="acoes">
-        <a class="btn btn--teal" href="${cat.free_sample.file}" download data-download="diagnostico">Baixar o diagnóstico grátis (PDF)</a>
+        <a class="btn btn--teal" href="${cat.free_sample.file}" download data-download="diagnostico">Baixar o diagnóstico de conhecimento (PDF)</a>
         <a class="btn btn--linha-escura" href="/gratis">Saiba mais</a>
       </div>
     </div>
@@ -499,7 +499,7 @@ const LANDINGS = [
     title: "Você estuda. Mas sabe <em>o que revisar agora?</em>",
     sub: "Escolha sua dificuldade e comece por um material direto ao ponto, com explicações, exemplos e prática comentada.",
     metaTitle: "Intensivão Elite | Revisão guiada para o ENEM em PDF",
-    metaDesc: `Oito módulos de revisão para o ENEM em PDF: ${brl(997)} cada ou os oito por ${brl(combo.price_cents)}. Faça o diagnóstico grátis.`,
+    metaDesc: `Oito módulos de revisão para o ENEM em PDF: ${brl(997)} cada ou os oito por ${brl(combo.price_cents)}. Faça o diagnóstico de conhecimento.`,
   },
   {
     path: "/exatas",
@@ -687,7 +687,7 @@ pages["privacidade/index.html"] = simples({
   <h2>Responsável</h2>
   <p>${sellerLine()}</p>
   <h2>O que esta página coleta</h2>
-  <p>Esta página não tem formulário, não pede cadastro e não pede nome, e-mail ou telefone. O diagnóstico grátis é baixado sem informar e-mail.</p>
+  <p>Esta página não tem formulário, não pede cadastro e não pede nome, e-mail ou telefone. O diagnóstico de conhecimento é baixado sem informar e-mail.</p>
   <h2>Serviços de terceiros</h2>
   <ul>
     <li><strong>Hospedagem:</strong> o provedor de hospedagem registra dados técnicos de acesso, como endereço IP e navegador, para operar e proteger o site.</li>
