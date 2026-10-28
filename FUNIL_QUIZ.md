@@ -49,15 +49,15 @@ Resultado:
 
 - **Combo vence** (pontos do combo ≥ do melhor módulo): o principal é o combo por R$ 59,90, com a economia de R$ 19,86. A alternativa é o módulo mais pontuado por R$ 9,97.
 - **Módulo vence:** o principal é o módulo por R$ 9,97. Como próximo passo, aparece o combo ("leve os oito e economize R$ 19,86").
-- **Sempre:** o link do Diagnóstico grátis e o botão "ver a página completa", que leva a `/?rec=<sku>`.
+- **Sempre:** o botão "ver a página completa", que leva a `/?rec=<sku>`.
 
 ## Nível do lead (para os anúncios)
 
 | Nível | Regra | O que o resultado mostra |
 |---|---|---|
 | Quente | ENEM 2026 e "preciso revisar" ou "tenho lacunas" | Oferta direta, com botão de checkout |
-| Morno | ENEM 2026 e "começando agora" | Aviso honesto: é revisão de fundamentos. Começar pelo Diagnóstico grátis e pelo Plano de 14 dias |
-| Frio | Não é o ENEM 2026 | Diagnóstico grátis em primeiro lugar, oferta em segundo |
+| Morno | ENEM 2026 e "começando agora" | Oferta primeiro, depois o aviso honesto de que é revisão de fundamentos (sem PDF grátis desde 27/10) |
+| Frio | Não é o ENEM 2026 | Aviso de que o material é para a reta final, depois a oferta (sem PDF grátis desde 27/10) |
 
 O nível vai no evento `quiz_complete`. Com o Pixel instalado, dá para otimizar a campanha B para quem termina o quiz como "quente".
 

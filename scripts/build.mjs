@@ -115,7 +115,7 @@ const header = () => `
     <nav class="topo__nav" aria-label="Seções">
       <a href="/#modulos">Módulos</a>
       <a href="/#combo">Combo</a>
-      <a href="/gratis">Diagnóstico de conhecimento</a>
+      <a href="/quiz">Fazer o quiz</a>
     </nav>
   </div>
 </header>`;
@@ -130,7 +130,7 @@ const footer = () => `
     </div>
     <nav aria-label="Links institucionais">
       <a href="/#faq">Perguntas frequentes</a>
-      <a href="/gratis">Diagnóstico de conhecimento</a>
+      <a href="/quiz">Fazer o quiz</a>
       <a href="/termos">Termos de uso e reembolso</a>
       <a href="/privacidade">Privacidade</a>
     </nav>
@@ -238,7 +238,7 @@ function hero(v) {
         <li>${icon("check")}Pagamento único</li>
         <li>${icon("cal")}Plano de 14 dias</li>
       </ul>
-      ${v.focus ? "" : `<p class="hero__gratis"><a href="/gratis">Faça o diagnóstico de conhecimento e descubra por onde começar.</a></p>`}
+      ${v.focus ? "" : `<p class="hero__gratis"><a href="/quiz">Não sabe por onde começar? Faça o quiz de 1 minuto.</a></p>`}
     </div>
     <div class="hero__capas" aria-hidden="${v.focus ? "false" : "true"}">
       <div class="leque">
@@ -382,7 +382,7 @@ function comboSection() {
         <p class="combo__eco">Economize ${brl(savingCents)} (cerca de ${savingPct}%)</p>
         <p class="combo__nota">Pagamento único. O valor “separados” é a soma dos oito módulos avulsos.</p>
       </div>
-      ${buy ? buy + feeNote("breve breve--claro") : `<a class="btn btn--ouro btn--grande" href="/gratis" data-select="combo">Comece pelo diagnóstico de conhecimento</a><p class="breve breve--claro">As vendas abrem em breve.</p>`}
+      ${buy ? buy + feeNote("breve breve--claro") : `<a class="btn btn--ouro btn--grande" href="/quiz" data-select="combo">Comece pelo quiz</a><p class="breve breve--claro">As vendas abrem em breve.</p>`}
     </div>
     <ul class="combo__lista">
       ${combo.includes.map((sku) => `<li><span class="combo__vol">${bySku[sku].volume}</span><span>${esc(bySku[sku].name)}<small>${esc(bySku[sku].facts.join(" • "))}</small></span></li>`).join("")}
@@ -406,16 +406,15 @@ const brinde = () => `
 </section>`;
 
 const gratisBox = () => `
-<section class="secao" id="diagnostico" aria-labelledby="t-diag">
+<section class="secao" id="quiz" aria-labelledby="t-quiz">
   <div class="wrap diag">
     <div>
-      <p class="etiqueta etiqueta--escura">Grátis, sem cadastro</p>
-      <h2 id="t-diag">Não sabe por onde começar? Faça o diagnóstico.</h2>
-      <p>O <strong>Diagnóstico Express ENEM</strong> traz as 12 questões de fundamentos do volume 08 com gabarito comentado e indica onde revisar cada dificuldade. Leva de 25 a 35 minutos.</p>
-      <p class="aviso">É uma amostra da coleção. Não prevê nota e não cobre a prova inteira.</p>
+      <p class="etiqueta etiqueta--escura">1 minuto • sem cadastro</p>
+      <h2 id="t-quiz">Não sabe por onde começar? Faça o quiz.</h2>
+      <p>Responda 7 perguntas rápidas sobre o seu prazo, a área que mais preocupa e o tempo que você tem por dia, e veja qual revisão faz mais sentido para você agora.</p>
+      <p class="aviso">É uma recomendação com base nas suas respostas. Não prevê nota.</p>
       <div class="acoes">
-        <a class="btn btn--teal" href="${cat.free_sample.file}" download data-download="diagnostico">Baixar o diagnóstico de conhecimento (PDF)</a>
-        <a class="btn btn--linha-escura" href="/gratis">Saiba mais</a>
+        <a class="btn btn--teal" href="/quiz">Fazer o quiz agora</a>
       </div>
     </div>
   </div>
@@ -462,7 +461,7 @@ const FAQ = () => [
   ["Posso usar no celular?", "Sim. É só ampliar a página conforme a necessidade. Os PDFs também podem ser impressos."],
   ["O que muda no combo?", `Ele reúne os oito módulos em uma compra: ${brl(combo.price_cents)} em vez de ${brl(sumCents)} somando os avulsos, uma economia de ${brl(savingCents)}.`],
   ["Tem correção de redação?", "Não. O módulo traz oficinas, modelos comentados, exercícios e checklist de autoavaliação, sem correção individual."],
-  ["O diagnóstico prevê minha nota?", "Não. Ele indica por onde começar a revisão. Doze questões curtas não permitem estimar nota."],
+  ["O quiz prevê minha nota?", "Não. Ele indica por onde começar a revisão com base nas suas respostas. Não estima nota."],
   ["Como recebo?", cat.delivery.summary],
   ...(SELLING && feeCents > 0 ? [["Tem alguma taxa além do preço?", `Sim. A plataforma de pagamento soma uma taxa de serviço de ${brl(feeCents)} no checkout, que aparece no resumo do pedido antes de você pagar.`]] : []),
   ["Posso pedir reembolso?", `Sim. Você pode desistir da compra em até 7 dias, como prevê o Código de Defesa do Consumidor, mesmo que já tenha baixado o material. O pedido é feito por ${supportLine()}.`],
@@ -499,7 +498,7 @@ const LANDINGS = [
     title: "Você estuda. Mas sabe <em>o que revisar agora?</em>",
     sub: "Escolha sua dificuldade e comece por um material direto ao ponto, com explicações, exemplos e prática comentada.",
     metaTitle: "Intensivão Elite | Revisão guiada para o ENEM em PDF",
-    metaDesc: `Oito módulos de revisão para o ENEM em PDF: ${brl(997)} cada ou os oito por ${brl(combo.price_cents)}. Faça o diagnóstico de conhecimento.`,
+    metaDesc: `Oito módulos de revisão para o ENEM em PDF: ${brl(997)} cada ou os oito por ${brl(combo.price_cents)}. Faça o quiz e veja por onde começar.`,
   },
   {
     path: "/exatas",
@@ -533,36 +532,6 @@ const LANDINGS = [
 const pages = {};
 for (const v of LANDINGS) pages[v.path === "/" ? "index.html" : `${v.path.slice(1)}/index.html`] = landing(v);
 
-pages["gratis/index.html"] = page({
-  title: "Diagnóstico Express ENEM grátis | Intensivão Elite",
-  description: "12 questões de fundamentos com gabarito comentado para descobrir por onde começar a revisão. PDF grátis, sem cadastro.",
-  path: "/gratis",
-  preload: null,
-  pageType: "free",
-  body: `
-<section class="hero hero--curto">
-  <div class="wrap hero__in hero__in--uma">
-    <div class="hero__texto">
-      <p class="etiqueta">Amostra gratuita • sem cadastro</p>
-      <h1>Diagnóstico Express <em>ENEM</em></h1>
-      <p class="hero__sub">12 questões de fundamentos, gabarito comentado e um destino de revisão para cada dificuldade. Em 25 a 35 minutos você sabe por onde começar.</p>
-      <div class="acoes">
-        <a class="btn btn--ouro" href="${cat.free_sample.file}" download data-download="diagnostico">Baixar o PDF grátis</a>
-        <a class="btn btn--linha" href="/#modulos">Ver os módulos</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="secao secao--clara">
-  <div class="wrap">
-    <div class="grade grade--3">
-      <article class="card-simples">${icon("list")}<h3>O que tem</h3><p>5 questões de Exatas, 3 de Humanas, 2 de Biologia, 2 de Linguagens, uma tarefa curta de redação, folha de respostas e gabarito comentado. São ${cat.free_sample.pages} páginas.</p></article>
-      <article class="card-simples">${icon("target")}<h3>De onde vem</h3><p>São as questões do diagnóstico de entrada do volume 08, <em>Plano de Revisão e Diagnóstico</em>, com comentários ampliados. Não são questões extras à coleção.</p></article>
-      <article class="card-simples">${icon("check")}<h3>O que não faz</h3><p>Não prevê nota, não estima resultado na TRI e não cobre a prova inteira. Serve para escolher o que revisar primeiro.</p></article>
-    </div>
-  </div>
-</section>`,
-});
 
 for (const u of cat.upsells) {
   pages[`${u.route}/index.html`] = page({
@@ -610,7 +579,6 @@ const quizDados = {
   products: Object.fromEntries(products.map((p) => [p.sku, quizItem(p, { cover: p.cover, summary: p.summary, facts: p.facts, volume: p.volume })])),
   combo: quizItem(combo, { saving: brl(savingCents), separate: brl(sumCents), pages: totalPages, count: combo.includes.length, per_module: brl(Math.round(combo.price_cents / combo.includes.length)) }),
   fee: SELLING && feeCents > 0 ? `+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.` : null,
-  diagnostic: cat.free_sample.file,
 };
 pages["quiz/index.html"] = page({
   title: "Quiz: por onde começar a revisão | Intensivão Elite",
@@ -649,8 +617,6 @@ pages["obrigado/index.html"] = simples({
   <p>O acesso é liberado somente depois da confirmação. Acompanhe pelo e-mail da plataforma de pagamento.</p>
   <h2>Precisa de ajuda?</h2>
   <p>Fale conosco por ${supportLine()}.</p>
-  <h2>Enquanto isso</h2>
-  <p>Se ainda não fez, baixe o <a href="${cat.free_sample.file}" download data-download="diagnostico">Diagnóstico Express</a> para escolher por onde começar.</p>
   <div class="acoes"><a class="btn btn--teal" href="/">Voltar à página principal</a></div>`,
 });
 
@@ -687,12 +653,12 @@ pages["privacidade/index.html"] = simples({
   <h2>Responsável</h2>
   <p>${sellerLine()}</p>
   <h2>O que esta página coleta</h2>
-  <p>Esta página não tem formulário, não pede cadastro e não pede nome, e-mail ou telefone. O diagnóstico de conhecimento é baixado sem informar e-mail.</p>
+  <p>Esta página não tem formulário, não pede cadastro e não pede nome, e-mail ou telefone. O quiz roda no seu navegador e não envia as respostas para nenhum servidor.</p>
   <h2>Serviços de terceiros</h2>
   <ul>
     <li><strong>Hospedagem:</strong> o provedor de hospedagem registra dados técnicos de acesso, como endereço IP e navegador, para operar e proteger o site.</li>
     <li><strong>Fontes:</strong> as fontes do texto são carregadas do Google Fonts, que recebe dados técnicos da requisição.</li>
-    <li><strong>Pixel do Meta:</strong> usamos o Pixel do Meta (Facebook e Instagram) para medir visitas e ações no site, como abrir a página de vendas, concluir o quiz, baixar o diagnóstico e clicar em comprar, e para mostrar anúncios a quem já visitou. O Meta recebe dados técnicos do navegador e cookies, conforme a <a href="https://www.facebook.com/privacy/policy" rel="noopener">política de privacidade dele</a>. Você pode limitar isso nas configurações de anúncios da sua conta Meta ou bloqueando cookies de terceiros no navegador.</li>
+    <li><strong>Pixel do Meta:</strong> usamos o Pixel do Meta (Facebook e Instagram) para medir visitas e ações no site, como abrir a página de vendas, concluir o quiz e clicar em comprar, e para mostrar anúncios a quem já visitou. O Meta recebe dados técnicos do navegador e cookies, conforme a <a href="https://www.facebook.com/privacy/policy" rel="noopener">política de privacidade dele</a>. Você pode limitar isso nas configurações de anúncios da sua conta Meta ou bloqueando cookies de terceiros no navegador.</li>
     <li><strong>Quiz:</strong> as respostas ficam no seu navegador. Só o resultado (produto recomendado e perfil de revisão) é enviado como evento de medição, sem nome, e-mail ou telefone.</li>
     <li><strong>Pagamento:</strong> ao clicar em comprar, você vai para o checkout da plataforma de pagamento. Os dados informados lá são tratados por ela, conforme a política de privacidade dela, e por nós apenas para entregar o produto e prestar suporte.</li>
   </ul>
@@ -712,20 +678,18 @@ pages["404.html"] = simples({
 // ---------- Saída ----------
 rmSync(DIST, { recursive: true, force: true });
 cpSync(join(ROOT, "public"), DIST, { recursive: true });
+// O PDF grátis saiu do site (27/10): nada de /downloads em dist/.
+rmSync(join(DIST, "downloads"), { recursive: true, force: true });
 for (const [file, html] of Object.entries(pages)) {
   mkdirSync(dirname(join(DIST, file)), { recursive: true });
   writeFileSync(join(DIST, file), html);
 }
-// Proteção: nenhum PDF fora da amostra gratuita pode ir para dist/.
+// Proteção: nenhum PDF pode ir para dist/.
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const pdfs = walk(DIST).filter((f) => f.toLowerCase().endsWith(".pdf"));
-const proibidos = pdfs.filter((f) => !f.endsWith(cat.free_sample.file));
+const proibidos = pdfs;
 if (proibidos.length) {
   console.error("PDF não autorizado em dist/:", proibidos);
-  process.exit(1);
-}
-if (!existsSync(join(DIST, cat.free_sample.file))) {
-  console.error("Amostra gratuita ausente: rode scripts/gerar-pdfs.sh");
   process.exit(1);
 }
 
