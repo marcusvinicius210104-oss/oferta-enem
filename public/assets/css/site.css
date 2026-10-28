@@ -424,3 +424,14 @@ a[data-checkout].btn--linha, a[data-checkout].btn--linha-escura { animation: com
 @media (prefers-reduced-motion: reduce) {
   a[data-checkout], a[data-checkout]::after, a[data-checkout]::before { animation: none !important; }
 }
+
+/* Diagnóstico do quiz no modo combo: cada resposta ligada ao módulo que resolve. */
+.diag { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 10px; }
+.diag li { display: grid; gap: 2px; padding: 14px 16px; border-radius: 12px; background: var(--fundo-claro); border-left: 4px solid var(--teal); }
+.diag__o { font-weight: 700; color: var(--ink); }
+.diag__m { color: var(--teal); font-weight: 600; }
+/* Botão que leva do diagnóstico ao combo: mesmo pulso dos botões de compra. */
+a.btn--pulso { position: relative; overflow: hidden; isolation: isolate; --anel: 227, 183, 101; animation: compra-salto 3.2s ease-in-out infinite, compra-anel 1.8s ease-out infinite; }
+a.btn--pulso::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .55) 50%, transparent 70%); transform: translateX(-120%); animation: compra-brilho 3.2s ease-in-out infinite; }
+a.btn--pulso::before { content: "→"; order: 2; margin-left: 8px; font-weight: 900; animation: compra-seta 1.1s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { a.btn--pulso, a.btn--pulso::after, a.btn--pulso::before { animation: none !important; } }

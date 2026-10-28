@@ -136,8 +136,54 @@ function paginaCompleta(sku) {
   return `/?${q}#${sku === COMBO ? "combo" : `modulo-${sku}`}`;
 }
 
+// Modo combo (/quiz?oferta=combo): o resultado vira um diagnóstico das respostas e leva à seção do combo na página de vendas.
+const MODO_COMBO = new URLSearchParams(location.search).get("oferta") === "combo";
+const AREA_SKUS = { exatas: ["exatas", "formulas"], humanas: ["humanas"], biologia: ["biologia-natureza"], redacao: ["redacao"], todas: ["exatas", "humanas", "biologia-natureza", "redacao"] };
+const TRAVA_SKU = { ordem: "plano", esqueco: "flashcards", formulas: "formulas", materia: "mapas", redacao: "redacao" };
+const nomes = (skus) => [...new Set(skus)].map((s) => D.products[s]?.name).filter(Boolean).join(" + ");
+
+function resultadoCombo(tier) {
+  const c = D.combo;
+  const resp = (id) => respostas[id] || [];
+  const rotulo = (id, op) => opcao(Q.find((q) => q.id === id), op)?.label || "";
+  const linhas = [];
+  for (const a of resp("area")) linhas.push([rotulo("area", a), nomes(AREA_SKUS[a] || [])]);
+  for (const t of resp("trava")) linhas.push([rotulo("trava", t), nomes([TRAVA_SKU[t]])]);
+  const tempo = resp("tempo")[0];
+  if (tempo) linhas.push([`${rotulo("tempo", tempo)} por dia até a prova`, `Plano de 14 dias com rotina de ${tempo === "6h" ? "6h" : tempo === "4h" ? "4h" : "2h"}`]);
+  const aviso = D.tiers[tier];
+  const capas = Object.values(D.products).map((p) => capa(p.cover, "")).join("");
+
+  mostrar(`
+    <div class="quiz__tela quiz__tela--resultado">
+      <div class="quiz__barra" aria-hidden="true"><span style="width:100%"></span></div>
+      <p class="etiqueta etiqueta--escura">Seu diagnóstico</p>
+      <h1>O que pesa na sua revisão agora</h1>
+      <p class="quiz__sub">Com base nas suas respostas. Não é previsão de nota: mostra o que revisar e em qual material está.</p>
+      ${tier === "frio" && aviso ? `<div class="quiz__aviso"><p>${esc(aviso)}</p></div>` : ""}
+      <ul class="diag">
+        ${linhas.map(([o, m]) => `<li><span class="diag__o">${esc(o)}</span><span class="diag__m">→ ${esc(m)}</span></li>`).join("")}
+      </ul>
+      <div class="vantagem vantagem--clara">
+        <div class="vantagem__capas" role="img" aria-label="As capas dos ${c.count} módulos do combo">${capas}</div>
+        <p class="vantagem__selo">Tudo isso está no combo</p>
+        <p class="vantagem__t">Os ${c.count} módulos por <strong>${c.price}</strong></p>
+        <p class="vantagem__d">Cada ponto do seu diagnóstico tem o módulo certo dentro do combo. Sai a <strong>${c.per_module} por módulo</strong>, em vez de ${c.separate} separados: economia de <strong>${c.saving}</strong>.</p>
+        <a class="btn btn--ouro btn--grande btn--bloco btn--pulso" href="${esc(paginaCompleta(COMBO))}" data-select="combo">Ver meu combo de revisão</a>
+      </div>
+      ${tier === "morno" && aviso ? `<div class="quiz__aviso"><p>${esc(aviso)}</p></div>` : ""}
+      <div class="quiz__fim">
+        <button type="button" class="quiz__voltar" data-refazer>Refazer o quiz</button>
+      </div>
+    </div>`);
+}
+
 function resultado() {
   const { principal, melhor, tier, nota } = calcular();
+  if (MODO_COMBO) {
+    track("quiz_complete", { lead_tier: tier, recommendation: COMBO, modo: "combo" });
+    return resultadoCombo(tier);
+  }
   track("quiz_complete", { lead_tier: tier, recommendation: principal });
 
   const c = D.combo;
