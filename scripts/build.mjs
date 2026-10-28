@@ -199,12 +199,18 @@ function buyButton(item, { label, kind = "module", cls = "btn" } = {}) {
 
 // Página de um módulo (anúncio direto): compra do módulo logo no topo, combo como segunda opção.
 function heroFocoAcoes(p) {
-  const compra = buyButton(p, { label: `Comprar por ${brl(p.price_cents)}`, cls: "btn btn--ouro btn--grande" });
+  const compra = buyButton(p, { label: `Só ${esc(p.name)} por ${brl(p.price_cents)}`, cls: "btn btn--linha" });
+  const compraCombo = buyButton(combo, { label: `Quero os 8 por ${brl(combo.price_cents)}`, kind: "combo", cls: "btn btn--ouro btn--grande" });
+  const porModulo = Math.round(combo.price_cents / combo.includes.length);
   return `
-      <p class="hero__oferta"><strong>${esc(p.name)}</strong> em PDF por <strong>${brl(p.price_cents)}</strong>, pagamento único e acesso na hora.</p>
-      <div class="acoes">
-        ${compra || `<a class="btn btn--ouro" href="#modulo-${esc(p.sku)}">Ver o módulo</a>`}
-        <a class="btn btn--linha" href="#combo" data-select="combo">Ou os oito por ${brl(combo.price_cents)}</a>
+      <div class="vantagem">
+        <p class="vantagem__selo">Mais vantagem</p>
+        <p class="vantagem__t">${esc(p.name)} + os outros 7 módulos por <strong>${brl(combo.price_cents)}</strong></p>
+        <p class="vantagem__d">Sai a <strong>${brl(porModulo)} por módulo</strong>, em vez de ${brl(p.price_cents)}. Você economiza <strong>${brl(savingCents)}</strong> e revisa todas as áreas e a redação com o Plano de 14 dias.</p>
+        ${compraCombo || `<a class="btn btn--ouro" href="#combo" data-select="combo">Ver o combo</a>`}
+      </div>
+      <div class="acoes acoes--avulso">
+        ${compra || `<a class="btn btn--linha" href="#modulo-${esc(p.sku)}">Ver só este módulo</a>`}
       </div>
       ${p.sku === "exatas" ? `<p class="hero__gratis"><a href="#amostra">Ver uma página do material ↓</a></p>` : ""}`;
 }
@@ -602,7 +608,7 @@ const quizDados = {
   questions: quiz.questions,
   tiers: quiz.tiers,
   products: Object.fromEntries(products.map((p) => [p.sku, quizItem(p, { cover: p.cover, summary: p.summary, facts: p.facts, volume: p.volume })])),
-  combo: quizItem(combo, { saving: brl(savingCents), separate: brl(sumCents), pages: totalPages, count: combo.includes.length }),
+  combo: quizItem(combo, { saving: brl(savingCents), separate: brl(sumCents), pages: totalPages, count: combo.includes.length, per_module: brl(Math.round(combo.price_cents / combo.includes.length)) }),
   fee: SELLING && feeCents > 0 ? `+ ${brl(feeCents)} de taxa de serviço da plataforma de pagamento, somada no checkout.` : null,
   diagnostic: cat.free_sample.file,
 };

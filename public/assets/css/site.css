@@ -371,3 +371,14 @@ a.marca:hover { color: #fff; }
   .hero--foco .leque { width: min(46%, 160px); }
   .hero--foco h1 { font-size: clamp(1.9rem, 8.5vw, 2.4rem); }
 }
+
+/* Caixa "Mais vantagem": destaca o combo nas páginas de módulo e no resultado do quiz. */
+.vantagem { margin: 22px 0 0; padding: 18px 18px 20px; border: 2px solid var(--gold); border-radius: 14px; background: rgba(227, 183, 101, .08); }
+.vantagem__selo { display: inline-block; margin: 0 0 8px; padding: 3px 10px; border-radius: 999px; background: var(--gold); color: #111F37; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.vantagem__t { margin: 0; font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+.vantagem__t strong { color: var(--gold); white-space: nowrap; }
+.vantagem__d { margin: 8px 0 16px; line-height: 1.5; opacity: .92; }
+.vantagem .btn { width: 100%; justify-content: center; text-align: center; }
+.vantagem--clara { margin: 20px 0; background: #fff8ea; color: #111F37; }
+.vantagem--clara .vantagem__t strong { color: #8a5a00; }
+.acoes--avulso { margin-top: 12px; }

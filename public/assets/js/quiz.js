@@ -176,7 +176,7 @@ function resultado() {
 
   const alternativa = ehCombo
     ? `<div class="quiz__alt"><p><strong>Prefere começar por um só?</strong> Pelas suas respostas, o módulo mais útil é <em>${esc(m.name)}</em>, por ${m.price}.</p>${botaoCompra(m, `Começar por ${esc(m.name)}`, "btn btn--linha-escura", principal)}</div>`
-    : `<div class="quiz__alt"><p><strong>Vai revisar mais de uma área?</strong> Leve os ${c.count} módulos por ${c.price} em vez de ${c.separate} e economize ${c.saving}.</p>${botaoCompra(c, `Ver o combo por ${c.price}`, "btn btn--linha-escura", principal)}</div>`;
+    : `<div class="vantagem vantagem--clara"><p class="vantagem__selo">Mais vantagem</p><p class="vantagem__t">${esc(m.name)} + os outros ${c.count - 1} módulos por <strong>${c.price}</strong></p><p class="vantagem__d">Sai a <strong>${c.per_module} por módulo</strong>, em vez de ${m.price}. Você economiza <strong>${c.saving}</strong> e revisa todas as áreas e a redação.</p>${botaoCompra(c, `Quero os ${c.count} por ${c.price}`, "btn btn--ouro btn--grande", principal)}</div>`;
 
   mostrar(`
     <div class="quiz__tela quiz__tela--resultado">
