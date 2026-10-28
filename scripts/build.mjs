@@ -113,9 +113,9 @@ const header = () => `
   <div class="wrap topo__in">
     <a class="marca" href="/" aria-label="Intensivão Elite, página inicial">INTENSIVÃO <b>ELITE</b></a>
     <nav class="topo__nav" aria-label="Seções">
-      <a href="/#modulos">Módulos</a>
-      <a href="/#combo">Combo</a>
-      <a href="/quiz">Fazer o quiz</a>
+      <a class="aba aba--modulos" href="/#modulos">Módulos <small>${brl(997)}</small></a>
+      <a class="aba aba--combo" href="/#combo" data-select="combo">Combo <small>−${Math.floor((savingCents / sumCents) * 100)}%</small></a>
+      <a class="aba aba--quiz" href="/quiz">Fazer o quiz <small>1 min</small></a>
     </nav>
   </div>
 </header>`;
